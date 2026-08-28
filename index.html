@@ -3,9 +3,143 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>PROGRAMMER SAMMER | تصميم وتطوير مواقع</title>
-  <meta name="description" content="PROGRAMMER SAMMER - تصميم وتطوير مواقع تعريفية احترافية للكافيهات والمطاعم والمشاريع المحلية في الرياض.">
-  <link rel="stylesheet" href="styles.css">
+  <title>PROGRAMMER SAMMER | تطوير مواقع للمشاريع</title>
+  <meta name="description" content="أبني مواقع تعريفية احترافية للمقاهي والمطاعم والمشاريع المحلية في الرياض. شاهد أعمالي وتواصل معي.">
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    :root {
+      --bg:#070b12;
+      --bg2:#0d131e;
+      --card:#101826;
+      --line:#1f2b3a;
+      --text:#e9edf5;
+      --muted:#9aa8b9;
+      --cyan:#39d0d8;
+      --cyan-dark:#1b9aa4;
+      --green:#3ddc84;
+      --grad:linear-gradient(135deg, #0d1b2a, #1a2f3f);
+    }
+    body {
+      font-family:'Segoe UI', Tahoma, 'Helvetica Neue', sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.7;
+      overflow-x:hidden;
+    }
+    .container { width:min(1100px, 92%); margin:0 auto; }
+    a { color:inherit; text-decoration:none; }
+
+    /* header */
+    .nav-wrap { position:sticky; top:0; z-index:100; background:rgba(7,11,18,0.85); backdrop-filter:blur(12px); border-bottom:1px solid var(--line); }
+    .nav { display:flex; align-items:center; justify-content:space-between; padding:1rem 0; }
+    .brand { display:flex; align-items:center; gap:0.8rem; font-weight:700; font-size:1.4rem; letter-spacing:0.5px; }
+    .brand img { width:44px; height:44px; border-radius:10px; object-fit:cover; border:1px solid var(--line); }
+    .brand span b { color:var(--cyan); }
+    .nav-links { display:flex; align-items:center; gap:2rem; }
+    .nav-links a:not(.btn) { font-weight:500; transition:0.3s; }
+    .nav-links a:not(.btn):hover { color:var(--cyan); }
+    .btn {
+      display:inline-block; background:var(--cyan); color:#041016; font-weight:700; padding:0.8rem 1.8rem;
+      border-radius:50px; font-size:0.95rem; transition:0.3s; border:1px solid transparent; cursor:pointer; text-align:center;
+    }
+    .btn:hover { background:var(--cyan-dark); color:white; transform:translateY(-3px); box-shadow:0 12px 25px -10px rgba(57,208,216,0.5); }
+    .btn-outline { background:transparent; border:2px solid var(--cyan); color:var(--cyan); }
+    .btn-outline:hover { background:var(--cyan); color:#041016; }
+    .btn-small { padding:0.5rem 1.2rem; font-size:0.85rem; }
+
+    /* hero */
+    .hero { position:relative; padding:5rem 0 4rem; background:radial-gradient(ellipse at 10% 20%, #0b1a2a, transparent 60%), var(--bg); }
+    .hero-grid { display:grid; grid-template-columns:1fr 1.1fr; gap:3rem; align-items:center; }
+    .eyebrow { color:var(--cyan); font-weight:600; letter-spacing:2px; font-size:0.9rem; margin-bottom:1rem; text-transform:uppercase; }
+    .hero h1 { font-size:3.2rem; line-height:1.3; margin-bottom:1.5rem; font-weight:800; }
+    .hero h1 span { color:var(--cyan); }
+    .lead { color:var(--muted); font-size:1.2rem; max-width:500px; margin-bottom:2rem; }
+    .hero-actions { display:flex; gap:1rem; margin-bottom:2rem; flex-wrap:wrap; }
+    .trust-row { display:flex; gap:1.5rem; flex-wrap:wrap; color:var(--green); font-weight:600; font-size:0.95rem; }
+
+    /* hero mockup */
+    .hero-card { position:relative; display:flex; justify-content:center; }
+    .browser-frame { background:var(--card); border:1px solid var(--line); border-radius:18px; overflow:hidden; width:100%; max-width:520px; box-shadow:0 25px 50px -12px rgba(0,0,0,0.7); transition:transform 0.3s; }
+    .browser-top { display:flex; align-items:center; gap:6px; background:#111a26; padding:0.75rem 1rem; border-bottom:1px solid var(--line); }
+    .browser-top span { width:12px; height:12px; border-radius:50%; display:inline-block; }
+    .browser-top .red { background:#ff5f57; } .browser-top .yellow { background:#febc2e; } .browser-top .green { background:#28c840; }
+    .browser-url { flex:1; background:#0c121d; border-radius:20px; padding:0.2rem 1rem; font-size:0.75rem; color:var(--muted); margin-inline-start:10px; }
+    .mockup-content { padding:1.5rem; display:flex; flex-direction:column; gap:1.2rem; background:#0b111e; }
+    .mockup-header { display:flex; justify-content:space-between; align-items:center; }
+    .mockup-logo { width:40px; height:40px; background:var(--cyan); border-radius:10px; opacity:0.8; }
+    .mockup-nav { display:flex; gap:10px; } .mockup-nav span { background:var(--line); width:35px; height:8px; border-radius:4px; display:block; }
+    .mockup-hero { background:linear-gradient(145deg, #112233, #1a2e42); border-radius:12px; padding:2rem; text-align:center; }
+    .mockup-hero h4 { font-size:1.5rem; margin-bottom:0.5rem; } .mockup-hero p { color:var(--muted); font-size:0.9rem; }
+    .mockup-buttons { display:flex; gap:0.5rem; justify-content:center; } .mockup-buttons div { background:var(--cyan); padding:0.5rem 1.2rem; border-radius:20px; font-size:0.8rem; font-weight:700; color:#041016; }
+    .mockup-cards { display:grid; grid-template-columns:repeat(3,1fr); gap:0.8rem; }
+    .mockup-card { background:var(--card); border-radius:10px; padding:1rem; display:flex; flex-direction:column; align-items:center; }
+    .mockup-card i { display:block; width:30px; height:30px; background:var(--cyan); opacity:0.5; border-radius:50%; margin-bottom:0.5rem; }
+    .mockup-card span { background:var(--line); height:6px; width:80%; border-radius:4px; }
+    .badge-float { position:absolute; bottom:20px; right:0; background:var(--green); color:#031008; font-weight:700; padding:0.6rem 1.2rem; border-radius:30px; font-size:0.85rem; box-shadow:0 10px 20px rgba(0,0,0,0.5); display:flex; align-items:center; gap:0.4rem; }
+    @media(max-width:900px) { .hero-grid { grid-template-columns:1fr; } .hero h1 { font-size:2.5rem; } }
+
+    /* sections */
+    .section { padding:4rem 0; }
+    .section-head { display:flex; justify-content:space-between; align-items:end; margin-bottom:2.5rem; flex-wrap:wrap; gap:1rem; }
+    .section-head h2 { font-size:2.2rem; font-weight:800; }
+    .section-head p { color:var(--muted); max-width:400px; }
+    .cards { display:grid; grid-template-columns:repeat(auto-fit, minmax(240px,1fr)); gap:1.5rem; }
+    .service { background:var(--card); border:1px solid var(--line); border-radius:20px; padding:2rem 1.5rem; transition:0.3s; }
+    .service:hover { transform:translateY(-8px); border-color:var(--cyan); box-shadow:0 20px 30px -15px rgba(57,208,216,0.15); }
+    .service span { color:var(--cyan); font-weight:700; font-size:1.2rem; display:block; margin-bottom:1rem; }
+    .service h3 { font-size:1.5rem; margin-bottom:0.5rem; }
+
+    /* demo / portfolio */
+    .section-dark { background:var(--bg2); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+    .demo-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(260px,1fr)); gap:1.5rem; }
+    .demo { background:var(--card); border:1px solid var(--line); border-radius:20px; padding:2rem 1.5rem; transition:0.3s; position:relative; overflow:hidden; display:flex; flex-direction:column; }
+    .demo:hover { transform:translateY(-8px); border-color:var(--cyan); }
+    .demo-tag { display:inline-block; background:var(--cyan); color:#041016; padding:0.3rem 1rem; border-radius:20px; font-weight:700; font-size:0.75rem; letter-spacing:1px; margin-bottom:1rem; width:fit-content; }
+    .demo h3 { font-size:1.5rem; margin-bottom:0.8rem; }
+    .demo p { color:var(--muted); flex:1; }
+    .demo span { color:var(--cyan); font-weight:600; margin-top:1rem; display:block; }
+    .demo-thumb { height:140px; background:var(--grad); border-radius:12px; margin-bottom:1.2rem; position:relative; overflow:hidden; }
+    .demo-thumb::after { content:""; position:absolute; inset:0; background:rgba(255,255,255,0.05); }
+    .demo-thumb .mock { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); color:var(--text); font-weight:700; }
+
+    /* about */
+    .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:center; }
+    .about-photo img { width:100%; border-radius:20px; border:1px solid var(--line); background:var(--card); }
+    .about-text { color:var(--muted); margin-bottom:2rem; font-size:1.1rem; }
+    .proof { display:flex; gap:2rem; flex-wrap:wrap; }
+    .proof div { display:flex; flex-direction:column; }
+    .proof b { color:var(--cyan); font-size:1.2rem; }
+    .proof span { color:var(--muted); }
+    @media(max-width:800px) { .about-grid { grid-template-columns:1fr; } }
+
+    /* credentials */
+    .credential-box { background:#0b1018; border:1px solid var(--line); border-radius:24px; padding:2.5rem; max-width:550px; width:100%; text-align:center; margin:0 auto; box-shadow:0 15px 30px rgba(0,0,0,0.5); }
+    .credential-image { width:100%; border-radius:12px; margin-bottom:1.5rem; filter:drop-shadow(0 0 15px rgba(57,208,216,0.3)); }
+    .credential-box p { color:var(--cyan); font-size:1rem; font-weight:bold; }
+
+    /* pricing */
+    .pricing { background:var(--bg); }
+    .price-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(260px,1fr)); gap:1.5rem; }
+    .price-card { background:var(--card); border:1px solid var(--line); border-radius:20px; padding:2rem; text-align:center; transition:0.3s; position:relative; }
+    .price-card.featured { border-color:var(--cyan); box-shadow:0 0 0 2px rgba(57,208,216,0.3), 0 25px 40px -20px rgba(57,208,216,0.4); }
+    .badge { position:absolute; top:-12px; left:50%; transform:translateX(-50%); background:var(--cyan); color:#041016; padding:0.4rem 1.5rem; border-radius:20px; font-weight:700; font-size:0.8rem; }
+    .price { font-size:2.8rem; font-weight:800; margin:1rem 0; }
+    .price small { font-size:1rem; color:var(--muted); }
+    .price-card ul { list-style:none; margin-bottom:1.5rem; }
+    .price-card li { padding:0.5rem 0; color:var(--muted); }
+    .price-card li::before { content:"✓"; color:var(--green); margin-inline-end:0.5rem; }
+
+    /* contact */
+    .contact-box { background:var(--grad); border:1px solid var(--line); border-radius:30px; padding:3rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:2rem; }
+    .contact-box h2 { font-size:2rem; margin-bottom:0.5rem; }
+    .contact-box p { color:var(--muted); max-width:500px; }
+
+    footer { border-top:1px solid var(--line); padding:2rem 0; text-align:center; color:var(--muted); }
+    .footer { display:flex; justify-content:space-between; flex-wrap:wrap; gap:1rem; }
+
+    .credential-image { animation:glowPulse 2.5s infinite; }
+    @keyframes glowPulse { 0% { filter:drop-shadow(0 0 10px rgba(57,208,216,0.2)); } 50% { filter:drop-shadow(0 0 25px rgba(57,208,216,0.7)); } 100% { filter:drop-shadow(0 0 10px rgba(57,208,216,0.2)); } }
+  </style>
 </head>
 <body>
 <header class="nav-wrap">
@@ -16,23 +150,25 @@
     </a>
     <div class="nav-links">
       <a href="#services">الخدمات</a>
-      <a href="#demos">النماذج</a>
+      <a href="#work">أعمالي</a>
       <a href="#about">من أنا</a>
+      <a href="#credentials">الوثيقة</a>
       <a class="btn btn-small" href="#contact">اطلب موقعك</a>
     </div>
   </nav>
 </header>
 
 <main id="top">
+  <!-- Hero جديد: تركيز على أصحاب الأعمال + عرض بصري لمشروع -->
   <section class="hero">
     <div class="container hero-grid">
       <div>
-        <div class="eyebrow">WEB DEVELOPMENT • RIYADH</div>
-        <h1>موقعك التعريفي<br><span>يبدأ هنا.</span></h1>
-        <p class="lead">أصمم مواقع حديثة وسريعة للمقاهي والمطاعم ومحلات الفطور والمشاريع المحلية، مع تجربة ممتازة على الجوال وطرق تواصل واضحة مع العميل.</p>
+        <div class="eyebrow">WEB DEVELOPER • RIYADH</div>
+        <h1>أبني مواقع تجعل <span>نشاطك يظهر</span> ويصل لعملائك</h1>
+        <p class="lead">أنا سامر، مطور مواقع متخصص في تصميم مواقع تعريفية للمقاهي والمطاعم والمشاريع المحلية. أقدم موقعًا سريعًا ومتجاوبًا مع زر واتساب وخرائط وقائمة خدمات واضحة — كل ما يحتاجه عميلك ليتواصل معك.</p>
         <div class="hero-actions">
           <a class="btn" href="#contact">أريد موقعًا لنشاطي</a>
-          <a class="btn btn-outline" href="#demos">شاهد النماذج</a>
+          <a class="btn btn-outline" href="#work">شاهد أعمالي</a>
         </div>
         <div class="trust-row">
           <span>✓ تصميم متجاوب</span>
@@ -41,26 +177,40 @@
         </div>
       </div>
       <div class="hero-card">
-        <div class="card-glow"></div>
-        <div class="terminal">
-          <div class="term-top"><i></i><i></i><i></i><span>sammer.dev</span></div>
-          <pre><code>&lt;site brand="local-business"&gt;
-  &lt;design&gt;modern&lt;/design&gt;
-  &lt;mobile&gt;optimized&lt;/mobile&gt;
-  &lt;contact&gt;whatsapp&lt;/contact&gt;
-  &lt;location&gt;riyadh&lt;/location&gt;
-&lt;/site&gt;</code></pre>
-          <div class="status">● موقع جاهز للانطلاق</div>
+        <!-- بدلاً من الكود: نموذج حي لموقع كوفي -->
+        <div class="browser-frame">
+          <div class="browser-top">
+            <span class="red"></span><span class="yellow"></span><span class="green"></span>
+            <span class="browser-url">sammer.dev/demo-cafe</span>
+          </div>
+          <div class="mockup-content">
+            <div class="mockup-header">
+              <div class="mockup-logo"></div>
+              <div class="mockup-nav"><span></span><span></span><span></span><span></span></div>
+            </div>
+            <div class="mockup-hero">
+              <h4>قهوة ومخبوزات</h4>
+              <p>منيو • موقع • اطلب الآن</p>
+              <div class="mockup-buttons"><div>اتصل بنا</div></div>
+            </div>
+            <div class="mockup-cards">
+              <div class="mockup-card"><i></i><span></span></div>
+              <div class="mockup-card"><i></i><span></span></div>
+              <div class="mockup-card"><i></i><span></span></div>
+            </div>
+          </div>
         </div>
+        <div class="badge-float">● موقع كوفي جاهز</div>
       </div>
     </div>
   </section>
 
+  <!-- الخدمات -->
   <section id="services" class="section">
     <div class="container">
       <div class="section-head">
         <div><div class="eyebrow">WHAT I BUILD</div><h2>خدمات واضحة، بدون تعقيد</h2></div>
-        <p>نركز على الأشياء التي يحتاجها العميل فعلًا للوصول إلى نشاطك والتواصل معه بسرعة.</p>
+        <p>أركز على ما يحتاجه نشاطك فعليًا لجذب العملاء وتسهيل التواصل معهم.</p>
       </div>
       <div class="cards">
         <article class="service"><span>01</span><h3>موقع تعريفي</h3><p>نبذة، خدمات، صور، معلومات التواصل، ساعات العمل وروابط التواصل الاجتماعي.</p></article>
@@ -70,17 +220,40 @@
     </div>
   </section>
 
-  <section id="demos" class="section section-dark">
+  <!-- قسم الأعمال (Portfolio) -->
+  <section id="work" class="section section-dark">
     <div class="container">
-      <div class="section-head light"><div><div class="eyebrow">DEMO PROJECTS</div><h2>نماذج جاهزة لقطاعات محلية</h2></div><p>هذه نماذج تجريبية تُستخدم لعرض أسلوب العمل على العملاء المحتملين.</p></div>
+      <div class="section-head light">
+        <div><div class="eyebrow">MY WORK</div><h2>نماذج من مشاريعي</h2></div>
+        <p>هذه نماذج قمت بتطويرها لعرض أسلوبي، ويمكن تخصيصها لتناسب نشاطك تمامًا.</p>
+      </div>
       <div class="demo-grid">
-        <a class="demo" href="demos/cafe.html"><div class="demo-tag">COFFEE</div><h3>نموذج كوفي</h3><p>واجهة أنيقة + منيو + موقع + واتساب</p><span>فتح النموذج ←</span></a>
-        <a class="demo" href="demos/bakery.html"><div class="demo-tag">BREAKFAST</div><h3>نموذج فطائر وفطور</h3><p>منتجات صباحية + طلب سريع + معلومات الفرع</p><span>فتح النموذج ←</span></a>
-        <a class="demo" href="demos/restaurant.html"><div class="demo-tag">RESTAURANT</div><h3>نموذج مطعم</h3><p>قائمة طعام + معرض صور + بيانات التواصل</p><span>فتح النموذج ←</span></a>
+        <a class="demo" href="demos/cafe.html">
+          <div class="demo-thumb"><span class="mock">☕ كوفي</span></div>
+          <div class="demo-tag">COFFEE</div>
+          <h3>موقع كوفي</h3>
+          <p>واجهة أنيقة + منيو + موقع + واتساب</p>
+          <span>فتح النموذج ←</span>
+        </a>
+        <a class="demo" href="demos/bakery.html">
+          <div class="demo-thumb"><span class="mock">🥐 مخبز</span></div>
+          <div class="demo-tag">BREAKFAST</div>
+          <h3>موقع فطائر وفطور</h3>
+          <p>منتجات صباحية + طلب سريع + معلومات الفرع</p>
+          <span>فتح النموذج ←</span>
+        </a>
+        <a class="demo" href="demos/restaurant.html">
+          <div class="demo-thumb"><span class="mock">🍽️ مطعم</span></div>
+          <div class="demo-tag">RESTAURANT</div>
+          <h3>موقع مطعم</h3>
+          <p>قائمة طعام + معرض صور + بيانات التواصل</p>
+          <span>فتح النموذج ←</span>
+        </a>
       </div>
     </div>
   </section>
 
+  <!-- من أنا -->
   <section id="about" class="section">
     <div class="container about-grid">
       <div class="about-photo"><img src="logo.jpg" alt="هوية PROGRAMMER SAMMER"></div>
@@ -88,11 +261,31 @@
         <div class="eyebrow">ABOUT SAMMER</div>
         <h2>من أنا؟</h2>
         <p class="about-text">أنا سامر، مطور مواقع إلكترونية أركز على بناء مواقع تعريفية احترافية للمشاريع والمنشآت الصغيرة. هدفي أن أجعل نشاطك ظاهرًا بشكل أفضل على الإنترنت، وأن يصل العميل إلى المنيو والموقع وطرق التواصل بسهولة.</p>
-        <div class="proof"><div><b>خدمة</b><span>تطوير مواقع إلكترونية</span></div><div><b>التركيز</b><span>مشاريع محلية ومشاريع صغيرة</span></div><div><b>العمل</b><span>الرياض وما حولها</span></div></div>
+        <div class="proof">
+          <div><b>خدمة</b><span>تطوير مواقع إلكترونية</span></div>
+          <div><b>التركيز</b><span>مشاريع محلية ومشاريع صغيرة</span></div>
+          <div><b>العمل</b><span>الرياض وما حولها</span></div>
+        </div>
       </div>
     </div>
   </section>
 
+  <!-- الوثيقة -->
+  <section id="credentials" class="section" style="padding-top:0;">
+    <div class="container">
+      <div class="section-head">
+        <div><div class="eyebrow">OFFICIAL LICENSE</div><h2>وثيقة العمل الحر المعتمدة</h2></div>
+        <p>مسجل رسمياً في وزارة الموارد البشرية والتنمية الاجتماعية كمطور مواقع إلكترونية.</p>
+      </div>
+      <div class="credential-box">
+        <img src="image.png" alt="وثيقة العمل الحر - PROGRAMMER SAMMER" class="credential-image">
+        <p>✅ وثيقة ممارس حر معتمدة<br>
+        <span style="color:#9aa8b9; font-weight:normal; font-size:0.9rem;">رمز التوثيق: <b style="color:#fff;">FL-290987510</b></span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- الباقات -->
   <section class="section pricing">
     <div class="container">
       <div class="section-head"><div><div class="eyebrow">STARTING PACKAGES</div><h2>باقات مبدئية</h2></div><p>الأسعار المعروضة نقطة بداية ويمكن تعديلها حسب احتياج المشروع.</p></div>
@@ -104,6 +297,7 @@
     </div>
   </section>
 
+  <!-- تواصل -->
   <section id="contact" class="section contact-section">
     <div class="container contact-box">
       <div><div class="eyebrow">LET'S BUILD</div><h2>جاهز تعرض نشاطك بشكل أفضل؟</h2><p>أرسل اسم النشاط ونوعه وما الذي تريده في الموقع، وسأحوّل الفكرة إلى نموذج واضح قبل التنفيذ.</p></div>
@@ -113,6 +307,5 @@
 </main>
 
 <footer><div class="container footer"><span>© 2026 PROGRAMMER SAMMER</span><span>Web Development • Riyadh</span></div></footer>
-<script src="script.js"></script>
 </body>
 </html>
