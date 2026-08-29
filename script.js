@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', () => {
       if (target) {
         e.preventDefault();
         target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        // إغلاق القائمة على الجوال
         const toggle = document.getElementById('nav-toggle');
         if (toggle && toggle.checked) {
           toggle.checked = false;
@@ -35,35 +34,28 @@ document.addEventListener('DOMContentLoaded', () => {
   // ===== النافذة المنبثقة لعرض وثيقة العمل الحر =====
   const toggleBtn = document.getElementById('credentialToggle');
   const overlay = document.getElementById('credentialOverlay');
-  const closeBtn = document.getElementById('closeModal');
 
-  if (toggleBtn && overlay && closeBtn) {
+  if (toggleBtn && overlay) {
     // فتح النافذة
     toggleBtn.addEventListener('click', (e) => {
       e.stopPropagation();
       overlay.classList.add('active');
-      document.body.style.overflow = 'hidden'; // منع التمرير خلف النافذة
+      document.body.style.overflow = 'hidden';
     });
 
-    // إغلاق النافذة
-    const closeModal = () => {
-      overlay.classList.remove('active');
-      document.body.style.overflow = ''; // إعادة التمرير
-    };
-
-    closeBtn.addEventListener('click', closeModal);
-
-    // إغلاق عند النقر على الخلفية (الـ overlay نفسها)
+    // إغلاق النافذة عند النقر على الخلفية
     overlay.addEventListener('click', (e) => {
       if (e.target === overlay) {
-        closeModal();
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
       }
     });
 
-    // إغلاق عند الضغط على زر Escape
+    // إغلاق النافذة عند الضغط على Escape
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && overlay.classList.contains('active')) {
-        closeModal();
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
       }
     });
   }
