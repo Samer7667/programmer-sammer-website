@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // تمرير سلس
+  // ===== تمرير سلس للروابط الداخلية =====
   document.querySelectorAll('a[href^="#"]').forEach(link => {
     link.addEventListener('click', e => {
       const target = document.querySelector(link.getAttribute('href'));
@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // تأثير ظهور البطاقات
+  // ===== تأثير ظهور البطاقات عند التمرير =====
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -32,20 +32,38 @@ document.addEventListener('DOMContentLoaded', () => {
     observer.observe(el);
   });
 
-  // ===== القائمة المنسدلة للوثيقة =====
+  // ===== النافذة المنبثقة لعرض وثيقة العمل الحر =====
   const toggleBtn = document.getElementById('credentialToggle');
-  const dropdown = document.getElementById('credentialDropdown');
+  const overlay = document.getElementById('credentialOverlay');
+  const closeBtn = document.getElementById('closeModal');
 
-  if (toggleBtn && dropdown) {
+  if (toggleBtn && overlay && closeBtn) {
+    // فتح النافذة
     toggleBtn.addEventListener('click', (e) => {
       e.stopPropagation();
-      dropdown.classList.toggle('show');
+      overlay.classList.add('active');
+      document.body.style.overflow = 'hidden'; // منع التمرير خلف النافذة
     });
 
-    // إغلاق القائمة عند النقر خارجها
-    document.addEventListener('click', (e) => {
-      if (!toggleBtn.contains(e.target) && !dropdown.contains(e.target)) {
-        dropdown.classList.remove('show');
+    // إغلاق النافذة
+    const closeModal = () => {
+      overlay.classList.remove('active');
+      document.body.style.overflow = ''; // إعادة التمرير
+    };
+
+    closeBtn.addEventListener('click', closeModal);
+
+    // إغلاق عند النقر على الخلفية (الـ overlay نفسها)
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay) {
+        closeModal();
+      }
+    });
+
+    // إغلاق عند الضغط على زر Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && overlay.classList.contains('active')) {
+        closeModal();
       }
     });
   }

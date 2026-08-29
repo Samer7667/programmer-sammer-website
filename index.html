@@ -173,33 +173,36 @@
       </div>
     </section>
 
-    <!-- ===== من أنا + الوثيقة (مع قائمة منسدلة) ===== -->
-<section id="about" class="section section-dark">
-  <div class="container about-grid">
-    <div class="about-photo"><img src="PRORAMMER SAMMER.jpg" alt="PROGRAMMER SAMMER"></div>
-    <div>
-      <div class="eyebrow">ABOUT SAMMER</div>
-      <h2>لماذا PROGRAMMER SAMMER؟</h2>
-      <p class="about-text">أنا سامر عبدالعزيز، مطور مواقع إلكترونية، أركز على بناء مواقع تعريفية للمشاريع والمنشآت المحلية. هدفي ليس إنشاء موقع فقط، بل بناء واجهة واضحة تساعد العميل على معرفة نشاطك والوصول إليه والتواصل معك بسهولة.</p>
-      
-      <div class="credential-badge">
-        <!-- تم حذف <img src="image.png" ...> -->
+    <!-- ===== من أنا + الوثيقة (مع نافذة منبثقة) ===== -->
+    <section id="about" class="section section-dark">
+      <div class="container about-grid">
+        <div class="about-photo"><img src="PRORAMMER SAMMER.jpg" alt="PROGRAMMER SAMMER"></div>
         <div>
-          <b>✅ وثيقة العمل الحر</b>
-          <span>متخصص في برمجة وتطوير المواقع الإلكترونية</span>
-          <!-- زر عرض الوثيقة مع قائمة منسدلة -->
-          <div class="dropdown-wrapper">
-            <button class="dropdown-btn" id="credentialToggle">عرض الوثيقة ←</button>
-            <div class="dropdown-content" id="credentialDropdown">
-              <img src="image.png" alt="وثيقة العمل الحر - PROGRAMMER SAMMER" style="width:100%; max-width:400px; border-radius:12px; border:2px solid var(--cyan);">
-              <p style="color:var(--muted); font-size:0.8rem; margin-top:0.5rem;">وثيقة ممارس حر معتمدة – رمز التوثيق: FL-290987510</p>
+          <div class="eyebrow">ABOUT SAMMER</div>
+          <h2>لماذا PROGRAMMER SAMMER؟</h2>
+          <p class="about-text">أنا سامر عبدالعزيز، مطور مواقع إلكترونية، أركز على بناء مواقع تعريفية للمشاريع والمنشآت المحلية. هدفي ليس إنشاء موقع فقط، بل بناء واجهة واضحة تساعد العميل على معرفة نشاطك والوصول إليه والتواصل معك بسهولة.</p>
+          
+          <div class="credential-badge">
+            <div>
+              <b>✅ وثيقة العمل الحر</b>
+              <span>متخصص في برمجة وتطوير المواقع الإلكترونية</span>
+              <!-- زر عرض الوثيقة مع نافذة منبثقة -->
+              <div class="dropdown-wrapper">
+                <button class="dropdown-btn" id="credentialToggle">عرض الوثيقة ←</button>
+                <!-- النافذة المنبثقة (Overlay) -->
+                <div class="dropdown-overlay" id="credentialOverlay">
+                  <div class="dropdown-modal">
+                    <button class="close-modal" id="closeModal">✕</button>
+                    <img src="image.png" alt="وثيقة العمل الحر - PROGRAMMER SAMMER" class="credential-image-modal">
+                    <p class="credential-caption">وثيقة ممارس حر معتمدة – رمز التوثيق: FL-290987510</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
     <section class="section">
       <div class="container">

@@ -137,12 +137,10 @@ a { color: inherit; text-decoration: none; }
 .about-grid { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 3rem; align-items: center; }
 .about-photo img { width: 100%; max-width: 300px; border-radius: 20px; border: 1px solid var(--line); }
 .credential-badge { display: flex; align-items: center; gap: 1rem; margin-top: 1.5rem; background: var(--card); padding: 0.8rem 1.2rem; border-radius: 16px; border: 1px solid var(--line); }
-.credential-badge img { width: 60px; height: 60px; object-fit: cover; border-radius: 10px; border: 1px solid var(--cyan); box-shadow: 0 0 20px rgba(54,232,255,0.2); animation: pulse-glow 2.5s infinite; }
 .credential-badge b { color: var(--cyan); display: block; }
 .credential-badge span { color: var(--muted); font-size: 0.8rem; }
-@keyframes pulse-glow { 0% { box-shadow: 0 0 10px rgba(54,232,255,0.2); } 100% { box-shadow: 0 0 30px rgba(54,232,255,0.6); } }
 
-/* ===== القائمة المنسدلة للوثيقة ===== */
+/* ===== النافذة المنبثقة للوثيقة ===== */
 .dropdown-wrapper {
   position: relative;
   display: inline-block;
@@ -152,9 +150,9 @@ a { color: inherit; text-decoration: none; }
   background: transparent;
   border: none;
   color: var(--cyan);
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   cursor: pointer;
-  padding: 4px 0;
+  padding: 6px 0;
   font-weight: 600;
   transition: 0.3s;
 }
@@ -162,37 +160,90 @@ a { color: inherit; text-decoration: none; }
   color: #fff;
   transform: translateX(4px);
 }
-.dropdown-content {
+
+.dropdown-overlay {
   display: none;
-  position: absolute;
-  top: 100%;
-  right: 0;
-  background: var(--bg2);
-  border: 1px solid var(--line);
-  border-radius: 16px;
-  padding: 1rem;
-  min-width: 200px;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.6);
-  z-index: 50;
-  margin-top: 8px;
-  animation: fadeSlide 0.3s ease;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(8px);
+  z-index: 9999;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem;
 }
-.dropdown-content.show {
-  display: block;
-}
-@keyframes fadeSlide {
-  0% { opacity: 0; transform: translateY(-10px); }
-  100% { opacity: 1; transform: translateY(0); }
+.dropdown-overlay.active {
+  display: flex;
 }
 
-/* الخطوات */
+.dropdown-modal {
+  background: var(--bg2);
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  padding: 2rem 1.5rem;
+  max-width: 600px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8);
+  animation: modalFadeIn 0.3s ease;
+}
+
+@keyframes modalFadeIn {
+  0% { opacity: 0; transform: scale(0.95) translateY(20px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.close-modal {
+  position: absolute;
+  top: 12px;
+  left: 16px;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: var(--text);
+  font-size: 1.8rem;
+  cursor: pointer;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s;
+  line-height: 1;
+}
+.close-modal:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: rotate(90deg);
+}
+
+.credential-image-modal {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  border-radius: 16px;
+  border: 2px solid var(--cyan);
+  box-shadow: 0 0 40px rgba(54, 232, 255, 0.15);
+}
+
+.credential-caption {
+  color: var(--muted);
+  font-size: 0.9rem;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+/* ===== الخطوات ===== */
 .steps { display: grid; grid-template-columns: repeat(4,1fr); gap: 1.5rem; }
 .step { text-align: center; padding: 1.5rem; border: 1px solid var(--line); border-radius: 20px; background: var(--card); }
 .step span { color: var(--cyan); font-weight: 900; font-size: 2rem; display: block; }
 .step h4 { font-size: 1.2rem; margin: 0.5rem 0; }
 .step p { color: var(--muted); font-size: 0.9rem; }
 
-/* الأسعار */
+/* ===== الأسعار ===== */
 .price-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; }
 .price-card { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 2rem; text-align: center; position: relative; transition: 0.3s; }
 .price-card.featured { border-color: var(--cyan); box-shadow: 0 0 0 2px rgba(54,232,255,0.2); }
@@ -203,16 +254,16 @@ a { color: inherit; text-decoration: none; }
 .price-card li { padding: 0.3rem 0; color: var(--muted); border-bottom: 1px solid var(--line); }
 .price-card li:last-child { border-bottom: none; }
 
-/* الأسئلة */
+/* ===== الأسئلة ===== */
 .faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
 .faq-grid h4 { color: var(--cyan); margin-bottom: 0.3rem; }
 .faq-grid p { color: var(--muted); }
 
-/* CTA */
+/* ===== CTA ===== */
 .contact-box { background: linear-gradient(135deg, #0d1b2a, #1a2f3f); border: 1px solid var(--line); border-radius: 30px; padding: 3rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 2rem; }
 .contact-box h2 { font-size: 2rem; }
 
-/* واتساب عائم */
+/* ===== واتساب عائم ===== */
 .whatsapp-float {
   position: fixed; bottom: 24px; right: 24px; z-index: 999;
   background: #25D366; color: #fff; width: 60px; height: 60px;
@@ -222,7 +273,7 @@ a { color: inherit; text-decoration: none; }
 }
 .whatsapp-float:hover { transform: scale(1.1); }
 
-/* فوتر */
+/* ===== فوتر ===== */
 footer { border-top: 1px solid var(--line); padding: 2rem 0; color: var(--muted); }
 .footer { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
 
@@ -254,4 +305,27 @@ footer { border-top: 1px solid var(--line); padding: 2rem 0; color: var(--muted)
   .four-cards { grid-template-columns: 1fr; }
   .solution-grid { grid-template-columns: 1fr; }
   .hero h1 { font-size: 2rem; }
+}
+
+/* ===== تنسيق الجوال للنافذة المنبثقة ===== */
+@media (max-width: 600px) {
+  .dropdown-modal {
+    padding: 1.5rem 1rem;
+    margin: 0.5rem;
+    border-radius: 16px;
+  }
+  .close-modal {
+    top: 8px;
+    left: 10px;
+    width: 36px;
+    height: 36px;
+    font-size: 1.4rem;
+  }
+  .credential-image-modal {
+    max-width: 100%;
+    border-radius: 12px;
+  }
+  .credential-caption {
+    font-size: 0.8rem;
+  }
 }
