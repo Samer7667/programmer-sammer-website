@@ -1,167 +1,3081 @@
 <!doctype html>
+
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>🍽️ THE TABLE | مطعم مأكولات عالمية</title>
-  <style>
-    * { margin:0; padding:0; box-sizing:border-box; }
-    body { font-family: 'Segoe UI', Tahoma, sans-serif; background: #111; color: #eee; line-height:1.7; }
-    .container { width: min(1100px, 92%); margin:0 auto; }
-    a { text-decoration: none; color: inherit; }
-
-    header { background: #1a1a1a; border-bottom: 2px solid #555; padding: 1rem 0; position:sticky; top:0; z-index:100; }
-    .nav { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; position:relative; }
-    .brand { font-weight:800; font-size:1.4rem; color:#fff; }
-    .nav-links { display:flex; gap:1rem; flex-wrap:wrap; }
-    .nav-links a { color:#ccc; transition:0.3s; font-weight:500; }
-    .nav-links a:hover { color:#fff; }
-    .nav-toggle-label { display:none; flex-direction:column; gap:4px; cursor:pointer; padding:5px; }
-    .nav-toggle-label span { width:28px; height:3px; background:#ccc; border-radius:4px; }
-    #nav-toggle:checked ~ .nav-links { display:flex; flex-direction:column; position:absolute; top:100%; right:0; background:#1a1a1a; width:100%; padding:1rem; gap:0.8rem; border-top:2px solid #555; }
-
-    .hero { background: radial-gradient(circle at 20% 30%, #2a2a2a, #0d0d0d); padding: 4rem 0; text-align: center; }
-    .hero h1 { font-size: clamp(2.5rem, 6vw, 3.5rem); }
-    .hero p { max-width:600px; margin:0 auto 1.5rem; color:#bbb; }
-    .btn { background:#fff; color:#111; padding:0.8rem 2rem; border-radius:40px; font-weight:700; display:inline-block; transition:0.3s; }
-    .btn:hover { background:#ddd; }
-
-    .menu { padding: 3rem 0; }
-    .menu h2 { text-align:center; font-size:2.5rem; margin-bottom:2rem; }
-    .menu-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(180px,1fr)); gap:1.5rem; }
-    .menu-item { background:#1e1e1e; padding:1.5rem; border-radius:16px; border:1px solid #333; text-align:center; }
-    .menu-item .price { color:#bbb; font-weight:800; }
-
-    .about-place { background: #1a1a1a; padding: 3rem 0; text-align:center; }
-    .about-place h2 { font-size:2.2rem; margin-bottom:1rem; }
-
-    .gallery { padding:3rem 0; background:#0d0d0d; }
-    .gallery h2 { text-align:center; font-size:2.2rem; margin-bottom:1.5rem; }
-    .gallery-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; }
-    .gallery-grid img { width:100%; height:180px; object-fit:cover; border-radius:12px; border:1px solid #333; }
-
-    .hours { padding:3rem 0; background:#1a1a1a; text-align:center; }
-    .hours h2 { font-size:2.2rem; margin-bottom:1.5rem; }
-    .hours-box { display:inline-block; background:#222; padding:1.5rem 2.5rem; border-radius:16px; border:1px solid #333; text-align:right; }
-
-    .location { padding:3rem 0; text-align:center; }
-    .location .map-link { display:inline-block; background:#fff; color:#111; padding:0.8rem 2rem; border-radius:40px; margin-top:0.5rem; font-weight:700; transition:0.3s; }
-    .location .map-link:hover { background:#ddd; }
-
-    .contact-demo { background:#0a0a0a; border-top:1px solid #333; padding:2rem 0; text-align:center; }
-    .contact-demo .btn-wa { background:#25D366; color:#fff; padding:0.8rem 2rem; border-radius:40px; font-weight:700; display:inline-block; margin-top:0.5rem; transition:0.3s; }
-    .contact-demo .btn-wa:hover { background:#1ebe5c; }
-
-    footer { background:#0a0a0a; border-top:1px solid #222; padding:1.5rem 0; text-align:center; color:#666; }
-    footer .demo-note { background:#444; color:#eee; padding:0.3rem 1rem; border-radius:20px; display:inline-block; margin-bottom:0.5rem; font-weight:600; }
-
-    @media (max-width: 700px) {
-      .nav-toggle-label { display:flex; }
-      .nav-links { display:none; }
-      #nav-toggle:checked ~ .nav-links { display:flex; }
-      .gallery-grid { grid-template-columns:1fr 1fr; }
+  <meta name="viewport" content="width=device-width, initial-scale=1">  <title>THE TABLE | مطعم فاخر في الرياض</title>
+  <meta name="description" content="THE TABLE - تجربة مأكولات عالمية في أجواء فاخرة وعصرية في الرياض.">
+  <meta name="theme-color" content="#11100e">  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">  <style>
+    :root{
+      --bg:#0d0c0a;
+      --bg2:#151310;
+      --card:#1a1814;
+      --card2:#211e19;
+      --gold:#c9a96e;
+      --gold2:#e0c58f;
+      --text:#f7f4ed;
+      --muted:#aaa39a;
+      --line:rgba(255,255,255,.09);
+      --white:#fff;
+      --shadow:0 20px 60px rgba(0,0,0,.35);
+      --radius:22px;
     }
-    @media (max-width: 500px) {
-      .gallery-grid { grid-template-columns:1fr; }
-      .hero h1 { font-size:2rem; }
-      .hours-box { padding:1rem; }
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      scroll-behavior:smooth;
     }
-  </style>
-</head>
-<body>
-  <header>
-    <div class="container nav">
-      <span class="brand">🍽️ THE TABLE</span>
-      <input type="checkbox" id="nav-toggle" hidden>
-      <label for="nav-toggle" class="nav-toggle-label"><span></span><span></span><span></span></label>
-      <div class="nav-links">
-        <a href="#">الرئيسية</a>
-        <a href="#menu">القائمة</a>
-        <a href="#about">عن المطعم</a>
-        <a href="#gallery">المعرض</a>
-        <a href="#hours">ساعات العمل</a>
-        <a href="#location">الموقع</a>
-        <a href="#contact">تواصل</a>
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family:"Cairo", sans-serif;
+      background:
+        radial-gradient(circle at top right, rgba(201,169,110,.08), transparent 25%),
+        var(--bg);
+      color:var(--text);
+      line-height:1.8;
+      overflow-x:hidden;
+    }
+
+    img{
+      display:block;
+      max-width:100%;
+    }
+
+    a{
+      text-decoration:none;
+      color:inherit;
+    }
+
+    button,
+    input,
+    textarea,
+    select{
+      font:inherit;
+    }
+
+    .container{
+      width:min(1180px, 92%);
+      margin:auto;
+    }
+
+    /* =========================
+       TOP BAR
+    ========================= */
+
+    .top-bar{
+      background:#090807;
+      border-bottom:1px solid var(--line);
+      color:#bdb5aa;
+      font-size:.82rem;
+    }
+
+    .top-bar-inner{
+      min-height:38px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+    }
+
+    .top-info{
+      display:flex;
+      align-items:center;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+
+    .top-info span{
+      display:flex;
+      align-items:center;
+      gap:6px;
+    }
+
+    /* =========================
+       HEADER
+    ========================= */
+
+    header{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      background:rgba(13,12,10,.88);
+      backdrop-filter:blur(18px);
+      border-bottom:1px solid rgba(255,255,255,.06);
+    }
+
+    .nav{
+      height:78px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:30px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      white-space:nowrap;
+    }
+
+    .brand-mark{
+      width:45px;
+      height:45px;
+      border:1px solid rgba(201,169,110,.5);
+      border-radius:50%;
+      display:grid;
+      place-items:center;
+      color:var(--gold2);
+      font-size:1.2rem;
+      background:rgba(201,169,110,.06);
+    }
+
+    .brand-text{
+      line-height:1.1;
+    }
+
+    .brand-title{
+      font-family:"Playfair Display", serif;
+      font-size:1.45rem;
+      letter-spacing:2px;
+      font-weight:700;
+    }
+
+    .brand-sub{
+      display:block;
+      margin-top:4px;
+      font-size:.65rem;
+      color:#91887c;
+      letter-spacing:2.5px;
+    }
+
+    .nav-links{
+      display:flex;
+      align-items:center;
+      gap:28px;
+    }
+
+    .nav-links a{
+      color:#cec8bf;
+      font-size:.9rem;
+      position:relative;
+      transition:.3s;
+    }
+
+    .nav-links a::after{
+      content:"";
+      position:absolute;
+      width:0;
+      height:1px;
+      bottom:-7px;
+      right:0;
+      background:var(--gold);
+      transition:.3s;
+    }
+
+    .nav-links a:hover{
+      color:var(--gold2);
+    }
+
+    .nav-links a:hover::after{
+      width:100%;
+    }
+
+    .nav-cta{
+      padding:11px 20px;
+      border:1px solid rgba(201,169,110,.45);
+      color:var(--gold2)!important;
+      border-radius:999px;
+    }
+
+    .nav-cta::after{
+      display:none;
+    }
+
+    .nav-cta:hover{
+      background:rgba(201,169,110,.1);
+    }
+
+    #nav-toggle{
+      display:none;
+    }
+
+    .hamburger{
+      display:none;
+      width:44px;
+      height:44px;
+      border:1px solid var(--line);
+      border-radius:12px;
+      cursor:pointer;
+      align-items:center;
+      justify-content:center;
+      flex-direction:column;
+      gap:5px;
+    }
+
+    .hamburger span{
+      width:20px;
+      height:2px;
+      background:#eee;
+      border-radius:20px;
+    }
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .hero{
+      position:relative;
+      min-height:calc(100vh - 116px);
+      display:flex;
+      align-items:center;
+      overflow:hidden;
+      background:
+        linear-gradient(90deg, rgba(8,7,6,.2), rgba(8,7,6,.9)),
+        url("https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=2000&q=90")
+        center/cover no-repeat;
+    }
+
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(circle at 65% 45%, rgba(201,169,110,.14), transparent 28%),
+        linear-gradient(to bottom, transparent 65%, var(--bg));
+    }
+
+    .hero-content{
+      position:relative;
+      z-index:2;
+      max-width:760px;
+      padding:100px 0;
+    }
+
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      color:var(--gold2);
+      font-size:.85rem;
+      font-weight:700;
+      margin-bottom:22px;
+      letter-spacing:.6px;
+    }
+
+    .eyebrow::before{
+      content:"";
+      width:42px;
+      height:1px;
+      background:var(--gold);
+    }
+
+    .hero h1{
+      font-family:"Playfair Display", serif;
+      font-size:clamp(3.2rem,8vw,6.8rem);
+      line-height:1.02;
+      font-weight:600;
+      max-width:850px;
+      letter-spacing:-1px;
+    }
+
+    .hero h1 span{
+      color:var(--gold2);
+    }
+
+    .hero p{
+      max-width:620px;
+      margin:26px 0 34px;
+      color:#d1cbc2;
+      font-size:1.05rem;
+      line-height:2;
+    }
+
+    .hero-buttons{
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:9px;
+      min-height:52px;
+      padding:0 24px;
+      border-radius:999px;
+      font-weight:700;
+      transition:.3s;
+      cursor:pointer;
+    }
+
+    .btn-primary{
+      background:var(--gold);
+      color:#17130d;
+      box-shadow:0 12px 35px rgba(201,169,110,.18);
+    }
+
+    .btn-primary:hover{
+      background:var(--gold2);
+      transform:translateY(-2px);
+    }
+
+    .btn-outline{
+      border:1px solid rgba(255,255,255,.18);
+      color:#f4f1ec;
+      background:rgba(255,255,255,.03);
+      backdrop-filter:blur(8px);
+    }
+
+    .btn-outline:hover{
+      border-color:rgba(201,169,110,.55);
+      color:var(--gold2);
+      transform:translateY(-2px);
+    }
+
+    .hero-bottom{
+      position:absolute;
+      bottom:28px;
+      right:0;
+      left:0;
+      z-index:3;
+    }
+
+    .hero-meta{
+      display:flex;
+      gap:36px;
+      flex-wrap:wrap;
+      color:#beb7ae;
+      font-size:.86rem;
+    }
+
+    .hero-meta div{
+      display:flex;
+      align-items:center;
+      gap:8px;
+    }
+
+    /* =========================
+       SECTIONS
+    ========================= */
+
+    section{
+      scroll-margin-top:95px;
+    }
+
+    .section{
+      padding:100px 0;
+    }
+
+    .section-head{
+      text-align:center;
+      max-width:720px;
+      margin:0 auto 55px;
+    }
+
+    .section-kicker{
+      color:var(--gold);
+      font-size:.82rem;
+      font-weight:800;
+      letter-spacing:2px;
+      margin-bottom:10px;
+    }
+
+    .section-title{
+      font-family:"Playfair Display",serif;
+      font-size:clamp(2.3rem,5vw,4rem);
+      font-weight:600;
+      line-height:1.2;
+    }
+
+    .section-text{
+      color:var(--muted);
+      margin-top:15px;
+    }
+
+    /* =========================
+       INTRO CARDS
+    ========================= */
+
+    .intro{
+      background:#0f0e0c;
+    }
+
+    .intro-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:20px;
+    }
+
+    .intro-card{
+      padding:35px 28px;
+      background:linear-gradient(145deg,#191713,#12110e);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      transition:.35s;
+    }
+
+    .intro-card:hover{
+      transform:translateY(-8px);
+      border-color:rgba(201,169,110,.26);
+      box-shadow:var(--shadow);
+    }
+
+    .icon{
+      width:52px;
+      height:52px;
+      display:grid;
+      place-items:center;
+      border-radius:15px;
+      background:rgba(201,169,110,.08);
+      color:var(--gold2);
+      font-size:1.35rem;
+      margin-bottom:20px;
+    }
+
+    .intro-card h3{
+      font-size:1.1rem;
+      margin-bottom:10px;
+    }
+
+    .intro-card p{
+      color:var(--muted);
+      font-size:.92rem;
+    }
+
+    /* =========================
+       MENU
+    ========================= */
+
+    .menu-section{
+      background:
+        radial-gradient(circle at 10% 10%, rgba(201,169,110,.05), transparent 25%),
+        var(--bg2);
+    }
+
+    .filters{
+      display:flex;
+      justify-content:center;
+      gap:10px;
+      flex-wrap:wrap;
+      margin:-20px auto 38px;
+    }
+
+    .filter-btn{
+      border:1px solid var(--line);
+      background:transparent;
+      color:#bdb5aa;
+      padding:10px 18px;
+      border-radius:999px;
+      cursor:pointer;
+      transition:.3s;
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active{
+      background:var(--gold);
+      color:#17130d;
+      border-color:var(--gold);
+    }
+
+    .menu-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:24px;
+    }
+
+    .menu-card{
+      position:relative;
+      overflow:hidden;
+      background:#171512;
+      border:1px solid var(--line);
+      border-radius:24px;
+      transition:.4s;
+    }
+
+    .menu-card:hover{
+      transform:translateY(-8px);
+      border-color:rgba(201,169,110,.3);
+      box-shadow:var(--shadow);
+    }
+
+    .menu-img{
+      height:245px;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .menu-img img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      transition:.5s;
+    }
+
+    .menu-card:hover .menu-img img{
+      transform:scale(1.06);
+    }
+
+    .badge{
+      position:absolute;
+      top:15px;
+      right:15px;
+      padding:6px 11px;
+      border-radius:999px;
+      background:rgba(13,12,10,.78);
+      border:1px solid rgba(255,255,255,.1);
+      color:var(--gold2);
+      font-size:.72rem;
+      font-weight:800;
+      backdrop-filter:blur(8px);
+    }
+
+    .menu-content{
+      padding:22px;
+    }
+
+    .menu-row{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:15px;
+      margin-bottom:8px;
+    }
+
+    .menu-row h3{
+      font-size:1.08rem;
+    }
+
+    .price{
+      color:var(--gold2);
+      font-weight:800;
+      white-space:nowrap;
+    }
+
+    .menu-content p{
+      color:#999188;
+      font-size:.84rem;
+      min-height:52px;
+    }
+
+    .menu-footer{
+      margin-top:16px;
+      padding-top:15px;
+      border-top:1px solid var(--line);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      color:#807970;
+      font-size:.77rem;
+    }
+
+    .stars{
+      color:#d2b37a;
+      letter-spacing:2px;
+    }
+
+    /* =========================
+       ABOUT
+    ========================= */
+
+    .about{
+      background:#0c0b09;
+    }
+
+    .about-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:70px;
+      align-items:center;
+    }
+
+    .about-image{
+      position:relative;
+    }
+
+    .about-image img{
+      width:100%;
+      height:560px;
+      object-fit:cover;
+      border-radius:28px;
+    }
+
+    .about-image::after{
+      content:"";
+      position:absolute;
+      width:150px;
+      height:150px;
+      border:1px solid rgba(201,169,110,.35);
+      border-radius:22px;
+      bottom:-18px;
+      right:-18px;
+      z-index:0;
+    }
+
+    .about-image img{
+      position:relative;
+      z-index:1;
+    }
+
+    .about-content .section-kicker{
+      margin-top:0;
+    }
+
+    .about-content h2{
+      font-family:"Playfair Display",serif;
+      font-size:clamp(2.4rem,5vw,4.2rem);
+      line-height:1.18;
+      margin-bottom:25px;
+    }
+
+    .about-content h2 span{
+      color:var(--gold2);
+    }
+
+    .about-content p{
+      color:var(--muted);
+      margin-bottom:18px;
+    }
+
+    .signature{
+      margin-top:28px;
+      display:flex;
+      align-items:center;
+      gap:14px;
+    }
+
+    .signature-line{
+      width:45px;
+      height:1px;
+      background:var(--gold);
+    }
+
+    .signature strong{
+      font-family:"Playfair Display",serif;
+      font-size:1.1rem;
+    }
+
+    /* =========================
+       GALLERY
+    ========================= */
+
+    .gallery{
+      background:var(--bg2);
+    }
+
+    .gallery-grid{
+      display:grid;
+      grid-template-columns:1.3fr 1fr 1fr;
+      grid-template-rows:220px 220px;
+      gap:15px;
+    }
+
+    .gallery-item{
+      position:relative;
+      overflow:hidden;
+      border-radius:20px;
+      border:1px solid var(--line);
+    }
+
+    .gallery-item.large{
+      grid-row:span 2;
+    }
+
+    .gallery-item img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      transition:.5s;
+    }
+
+    .gallery-item::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(to top,rgba(0,0,0,.45),transparent 55%);
+      opacity:.7;
+    }
+
+    .gallery-item:hover img{
+      transform:scale(1.07);
+    }
+
+    /* =========================
+       EXPERIENCE
+    ========================= */
+
+    .experience{
+      position:relative;
+      background:
+        linear-gradient(rgba(8,7,6,.76),rgba(8,7,6,.82)),
+        url("https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=2000&q=85")
+        center/cover fixed;
+    }
+
+    .experience-box{
+      max-width:850px;
+      margin:auto;
+      text-align:center;
+      padding:70px 30px;
+    }
+
+    .experience-box .section-title{
+      margin-bottom:18px;
+    }
+
+    .experience-box p{
+      color:#c6c0b8;
+      max-width:650px;
+      margin:0 auto 25px;
+    }
+
+    /* =========================
+       REVIEWS
+    ========================= */
+
+    .reviews{
+      background:#0c0b09;
+    }
+
+    .reviews-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:20px;
+    }
+
+    .review{
+      background:linear-gradient(145deg,#191713,#13120f);
+      border:1px solid var(--line);
+      border-radius:22px;
+      padding:28px;
+    }
+
+    .review-stars{
+      color:#d5b879;
+      letter-spacing:3px;
+      margin-bottom:18px;
+    }
+
+    .review p{
+      color:#c0b9b0;
+      font-size:.93rem;
+      line-height:2;
+      margin-bottom:25px;
+    }
+
+    .review-user{
+      display:flex;
+      align-items:center;
+      gap:13px;
+      border-top:1px solid var(--line);
+      padding-top:18px;
+    }
+
+    .avatar{
+      width:42px;
+      height:42px;
+      border-radius:50%;
+      background:linear-gradient(135deg,#695538,#27231d);
+      display:grid;
+      place-items:center;
+      color:#fff;
+      font-weight:800;
+    }
+
+    .review-user strong{
+      display:block;
+      font-size:.9rem;
+    }
+
+    .review-user span{
+      color:#777067;
+      font-size:.75rem;
+    }
+
+    /* =========================
+       RESERVATION
+    ========================= */
+
+    .reservation{
+      background:
+        radial-gradient(circle at 85% 50%, rgba(201,169,110,.09), transparent 30%),
+        var(--bg2);
+    }
+
+    .reservation-grid{
+      display:grid;
+      grid-template-columns:.85fr 1.15fr;
+      gap:50px;
+      align-items:center;
+    }
+
+    .reservation-info h2{
+      font-family:"Playfair Display",serif;
+      font-size:clamp(2.4rem,5vw,4rem);
+      line-height:1.2;
+      margin-bottom:20px;
+    }
+
+    .reservation-info h2 span{
+      color:var(--gold2);
+    }
+
+    .reservation-info p{
+      color:var(--muted);
+      margin-bottom:28px;
+    }
+
+    .contact-list{
+      display:grid;
+      gap:14px;
+    }
+
+    .contact-item{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      color:#bdb6ad;
+    }
+
+    .contact-item i{
+      width:40px;
+      height:40px;
+      border-radius:12px;
+      display:grid;
+      place-items:center;
+      background:rgba(201,169,110,.08);
+      color:var(--gold2);
+      font-style:normal;
+    }
+
+    .reservation-form{
+      background:#171512;
+      border:1px solid var(--line);
+      border-radius:25px;
+      padding:30px;
+      box-shadow:var(--shadow);
+    }
+
+    .form-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:15px;
+    }
+
+    .field{
+      display:flex;
+      flex-direction:column;
+      gap:7px;
+    }
+
+    .field.full{
+      grid-column:1/-1;
+    }
+
+    .field label{
+      color:#a69f96;
+      font-size:.8rem;
+    }
+
+    .field input,
+    .field select,
+    .field textarea{
+      width:100%;
+      border:1px solid var(--line);
+      background:#0f0e0c;
+      color:#f5f1e9;
+      border-radius:13px;
+      padding:13px 14px;
+      outline:none;
+      transition:.3s;
+    }
+
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus{
+      border-color:rgba(201,169,110,.55);
+      box-shadow:0 0 0 3px rgba(201,169,110,.06);
+    }
+
+    .field textarea{
+      resize:vertical;
+      min-height:100px;
+    }
+
+    .form-submit{
+      width:100%;
+      border:none;
+      margin-top:17px;
+    }
+
+    /* =========================
+       LOCATION + HOURS
+    ========================= */
+
+    .location{
+      background:#0c0b09;
+    }
+
+    .location-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:25px;
+    }
+
+    .location-card{
+      background:#171512;
+      border:1px solid var(--line);
+      border-radius:24px;
+      padding:32px;
+    }
+
+    .location-card h3{
+      margin-bottom:18px;
+      font-size:1.2rem;
+    }
+
+    .address{
+      color:#aca59c;
+      margin-bottom:22px;
+    }
+
+    .hours-list{
+      display:grid;
+      gap:10px;
+    }
+
+    .hours-row{
+      display:flex;
+      justify-content:space-between;
+      gap:20px;
+      padding-bottom:10px;
+      border-bottom:1px dashed rgba(255,255,255,.08);
+      color:#aaa39a;
+    }
+
+    .hours-row strong{
+      color:#ece7de;
+      font-weight:600;
+    }
+
+    .map-button{
+      display:inline-flex;
+      margin-top:15px;
+    }
+
+    /* =========================
+       CTA
+    ========================= */
+
+    .cta{
+      padding:70px 0;
+      background:
+        linear-gradient(110deg, rgba(201,169,110,.17), rgba(201,169,110,.04)),
+        #11100e;
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+    }
+
+    .cta-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:30px;
+    }
+
+    .cta h2{
+      font-family:"Playfair Display",serif;
+      font-size:clamp(2rem,4vw,3.2rem);
+    }
+
+    .cta p{
+      color:#aaa39a;
+      margin-top:8px;
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer{
+      background:#090807;
+      padding:60px 0 25px;
+    }
+
+    .footer-grid{
+      display:grid;
+      grid-template-columns:1.4fr 1fr 1fr 1fr;
+      gap:35px;
+      padding-bottom:40px;
+      border-bottom:1px solid var(--line);
+    }
+
+    .footer-brand p{
+      color:#817970;
+      margin-top:15px;
+      max-width:330px;
+      font-size:.88rem;
+    }
+
+    .footer-col h4{
+      margin-bottom:14px;
+      font-size:.92rem;
+    }
+
+    .footer-col a{
+      display:block;
+      color:#827a72;
+      margin:8px 0;
+      font-size:.84rem;
+      transition:.3s;
+    }
+
+    .footer-col a:hover{
+      color:var(--gold2);
+      transform:translateX(-3px);
+    }
+
+    .footer-bottom{
+      padding-top:20px;
+      display:flex;
+      justify-content:space-between;
+      gap:20px;
+      flex-wrap:wrap;
+      color:#5e5852;
+      font-size:.75rem;
+    }
+
+    .demo-note{
+      display:inline-flex;
+      padding:5px 10px;
+      border-radius:999px;
+      border:1px solid rgba(201,169,110,.25);
+      color:var(--gold2);
+      background:rgba(201,169,110,.05);
+    }
+
+    /* =========================
+       WHATSAPP
+    ========================= */
+
+    .whatsapp{
+      position:fixed;
+      left:22px;
+      bottom:22px;
+      z-index:999;
+      width:58px;
+      height:58px;
+      display:grid;
+      place-items:center;
+      border-radius:50%;
+      background:#25d366;
+      color:#fff;
+      font-size:1.5rem;
+      box-shadow:0 14px 35px rgba(37,211,102,.25);
+      transition:.3s;
+    }
+
+    .whatsapp:hover{
+      transform:scale(1.08);
+    }
+
+    .whatsapp::before{
+      content:"";
+      position:absolute;
+      inset:-6px;
+      border:1px solid rgba(37,211,102,.22);
+      border-radius:50%;
+      animation:pulse 2s infinite;
+    }
+
+    @keyframes pulse{
+      0%{transform:scale(.9);opacity:.9}
+      100%{transform:scale(1.35);opacity:0}
+    }
+
+    /* =========================
+       SCROLL TOP
+    ========================= */
+
+    .scroll-top{
+      position:fixed;
+      left:22px;
+      bottom:95px;
+      width:42px;
+      height:42px;
+      border-radius:12px;
+      border:1px solid var(--line);
+      background:#171512;
+      color:#ddd;
+      display:grid;
+      place-items:center;
+      opacity:0;
+      visibility:hidden;
+      transition:.3s;
+      cursor:pointer;
+      z-index:998;
+    }
+
+    .scroll-top.show{
+      opacity:1;
+      visibility:visible;
+    }
+
+    /* =========================
+       REVEAL
+    ========================= */
+
+    .reveal{
+      opacity:0;
+      transform:translateY(30px);
+      transition:opacity .8s ease, transform .8s ease;
+    }
+
+    .reveal.active{
+      opacity:1;
+      transform:translateY(0);
+    }
+
+    /* =========================
+       RESPONSIVE
+    ========================= */
+
+    @media(max-width:1000px){
+
+      .nav-links{
+        gap:16px;
+      }
+
+      .nav-links a{
+        font-size:.82rem;
+      }
+
+      .menu-grid{
+        grid-template-columns:repeat(2,1fr);
+      }
+
+      .reviews-grid{
+        grid-template-columns:1fr 1fr;
+      }
+
+      .footer-grid{
+        grid-template-columns:1fr 1fr;
+      }
+
+      .reservation-grid{
+        grid-template-columns:1fr;
+      }
+    }
+
+    @media(max-width:800px){
+
+      .top-bar{
+        display:none;
+      }
+
+      .nav{
+        height:70px;
+      }
+
+      .hamburger{
+        display:flex;
+      }
+
+      .nav-links{
+        display:none;
+        position:absolute;
+        top:70px;
+        right:4%;
+        left:4%;
+        flex-direction:column;
+        align-items:stretch;
+        gap:0;
+        padding:10px;
+        border:1px solid var(--line);
+        border-radius:18px;
+        background:rgba(15,14,12,.98);
+        box-shadow:var(--shadow);
+      }
+
+      .nav-links a{
+        padding:12px 14px;
+        border-bottom:1px solid rgba(255,255,255,.05);
+      }
+
+      .nav-links .nav-cta{
+        margin-top:8px;
+        text-align:center;
+        border-bottom:none;
+      }
+
+      #nav-toggle:checked ~ .nav-links{
+        display:flex;
+      }
+
+      .hero{
+        min-height:calc(100vh - 70px);
+      }
+
+      .hero-content{
+        padding:80px 0 120px;
+      }
+
+      .intro-grid,
+      .about-grid,
+      .location-grid{
+        grid-template-columns:1fr;
+      }
+
+      .about-image img{
+        height:450px;
+      }
+
+      .gallery-grid{
+        grid-template-columns:1fr 1fr;
+        grid-template-rows:220px 220px 220px;
+      }
+
+      .gallery-item.large{
+        grid-row:span 2;
+      }
+
+      .reviews-grid{
+        grid-template-columns:1fr;
+      }
+
+      .cta-inner{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+    }
+
+    @media(max-width:600px){
+
+      .section{
+        padding:75px 0;
+      }
+
+      .brand-sub{
+        display:none;
+      }
+
+      .brand-title{
+        font-size:1.25rem;
+      }
+
+      .brand-mark{
+        width:39px;
+        height:39px;
+      }
+
+      .hero h1{
+        font-size:3rem;
+      }
+
+      .hero p{
+        font-size:.92rem;
+      }
+
+      .hero-buttons{
+        flex-direction:column;
+        align-items:stretch;
+      }
+
+      .btn{
+        width:100%;
+      }
+
+      .hero-bottom{
+        bottom:20px;
+      }
+
+      .hero-meta{
+        gap:10px 20px;
+        font-size:.75rem;
+      }
+
+      .menu-grid{
+        grid-template-columns:1fr;
+      }
+
+      .gallery-grid{
+        grid-template-columns:1fr;
+        grid-template-rows:230px 230px 230px 230px 230px;
+      }
+
+      .gallery-item.large{
+        grid-row:span 1;
+      }
+
+      .about-image::after{
+        display:none;
+      }
+
+      .about-image img{
+        height:380px;
+      }
+
+      .form-grid{
+        grid-template-columns:1fr;
+      }
+
+      .field.full{
+        grid-column:auto;
+      }
+
+      .reservation-form{
+        padding:20px;
+      }
+
+      .footer-grid{
+        grid-template-columns:1fr;
+      }
+
+      .footer-bottom{
+        flex-direction:column;
+      }
+
+      .whatsapp{
+        left:16px;
+        bottom:16px;
+      }
+
+      .scroll-top{
+        left:16px;
+        bottom:85px;
+      }
+    }
+  </style></head><body>  <!-- =========================
+       TOP BAR
+  ========================== -->  <div class="top-bar">
+    <div class="container top-bar-inner">
+      <div class="top-info">
+        <span>📍 الرياض، المملكة العربية السعودية</span>
+        <span>🕒 يوميًا 12:00 م – 12:00 ص</span>
+      </div>  <div class="top-info">
+    <span>★ تقييم 4.9/5</span>
+    <span>☎️ 920000000</span>
+  </div>
+</div>
+
+  </div>  <!-- =========================
+       HEADER
+  ========================== -->  <header>
+    <div class="container nav">  <a href="#home" class="brand">
+
+    <div class="brand-mark">
+      🍽️
+    </div>
+
+    <div class="brand-text">
+      <div class="brand-title">THE TABLE</div>
+      <span class="brand-sub">GLOBAL DINING EXPERIENCE</span>
+    </div>
+
+  </a>
+
+  <input type="checkbox" id="nav-toggle">
+
+  <label for="nav-toggle" class="hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </label>
+
+  <nav class="nav-links">
+
+    <a href="#home">الرئيسية</a>
+    <a href="#menu">القائمة</a>
+    <a href="#about">عن المطعم</a>
+    <a href="#gallery">المعرض</a>
+    <a href="#reviews">آراء العملاء</a>
+    <a href="#location">الموقع</a>
+
+    <a href="#reservation" class="nav-cta">
+      احجز طاولتك
+    </a>
+
+  </nav>
+
+</div>
+
+  </header>  <!-- =========================
+       HERO
+  ========================== -->  <main id="home"><section class="hero">
+
+  <div class="container">
+
+    <div class="hero-content reveal">
+
+      <div class="eyebrow">
+        تجربة طعام استثنائية
       </div>
-    </div>
-  </header>
 
-  <section class="hero">
-    <div class="container">
-      <h1>أكل يستحق التجربة</h1>
-      <p>مأكولات عالمية بأجواء عصرية. اختر من قائمتنا المتنوعة واستمتع بوجبة لا تُنسى.</p>
-      <a href="#menu" class="btn">استعرض القائمة</a>
-    </div>
-  </section>
+      <h1>
+        حيث يجتمع
+        <span>الطعام</span>
+        مع الفن.
+      </h1>
 
-  <section id="menu" class="menu">
-    <div class="container">
-      <h2>🍛 قائمة الطعام</h2>
-      <div class="menu-grid">
-        <div class="menu-item"><h3>برجر لحم</h3><p>لحم مشوي، خضار طازج، صوص خاص.</p><span class="price">29 ر.س</span></div>
-        <div class="menu-item"><h3>باستا كريمية</h3><p>صلصة كريمية مع فطر وبقدونس.</p><span class="price">34 ر.س</span></div>
-        <div class="menu-item"><h3>دجاج مشوي</h3><p>متبل بالأعشاب، مع أرز وخضار.</p><span class="price">39 ر.س</span></div>
-        <div class="menu-item"><h3>حلى اليوم</h3><p>يتغير حسب اختيار الشيف.</p><span class="price">18 ر.س</span></div>
-        <div class="menu-item"><h3>سمك مشوي</h3><p>مع صلصة الليمون والأعشاب.</p><span class="price">45 ر.س</span></div>
-        <div class="menu-item"><h3>سلطة سيزر</h3><p>طازجة مع صوص سيزر.</p><span class="price">22 ر.س</span></div>
+      <p>
+        اكتشف عالمًا من النكهات العالمية في THE TABLE،
+        حيث نختار أجود المكونات ونقدمها بطريقة عصرية
+        لتعيش تجربة تستحق أن تتكرر.
+      </p>
+
+      <div class="hero-buttons">
+
+        <a href="#menu" class="btn btn-primary">
+          🍽️ استكشف القائمة
+        </a>
+
+        <a href="#reservation" class="btn btn-outline">
+          📅 احجز طاولة
+        </a>
+
       </div>
-    </div>
-  </section>
 
-  <section id="about" class="about-place">
-    <div class="container">
-      <h2>عن THE TABLE</h2>
-      <p>مطعم يقدم أشهى المأكولات العالمية في أجواء أنيقة. نستخدم أجود المكونات لنقدم لك تجربة طعام استثنائية.</p>
     </div>
-  </section>
 
-  <section id="gallery" class="gallery">
-    <div class="container">
-      <h2>📸 معرض الصور</h2>
-      <div class="gallery-grid">
-        <img src="https://picsum.photos/400/300?random=20" alt="صورة المطعم 1" loading="lazy">
-        <img src="https://picsum.photos/400/300?random=21" alt="صورة المطعم 2" loading="lazy">
-        <img src="https://picsum.photos/400/300?random=22" alt="صورة المطعم 3" loading="lazy">
-        <img src="https://picsum.photos/400/300?random=23" alt="صورة المطعم 4" loading="lazy">
-        <img src="https://picsum.photos/400/300?random=24" alt="صورة المطعم 5" loading="lazy">
-        <img src="https://picsum.photos/400/300?random=25" alt="صورة المطعم 6" loading="lazy">
+  </div>
+
+  <div class="hero-bottom">
+
+    <div class="container hero-meta">
+
+      <div>
+        ✦ مكونات مختارة بعناية
       </div>
-    </div>
-  </section>
 
-  <section id="hours" class="hours">
-    <div class="container">
-      <h2>🕒 ساعات العمل</h2>
-      <div class="hours-box">
-        <p>السبت – الخميس: 12:00 م – 12:00 ص</p>
-        <p>الجمعة: 2:00 م – 12:00 ص</p>
+      <div>
+        ✦ أجواء راقية
       </div>
-    </div>
-  </section>
 
-  <section id="location" class="location">
-    <div class="container">
-      <h2>📍 موقعنا</h2>
-      <p>طريق الملك فهد، الرياض – مقابل برج المملكة</p>
-      <a href="https://www.google.com/maps/place/الرياض" target="_blank" rel="noopener noreferrer" class="map-link">🗺️ افتح في Google Maps</a>
-    </div>
-  </section>
-
-  <section id="contact" class="contact-demo">
-    <div class="container">
-      <div style="background:rgba(255,255,255,0.05); padding:1.5rem; border-radius:16px; max-width:500px; margin:0 auto;">
-        <p style="color:#aaa; font-weight:600;">📌 نموذج تجريبي (Demo)</p>
-        <p>للتواصل مع المطور:</p>
-        <a href="https://wa.me/966576124840?text=السلام%20عليكم%20شاهدت%20النموذج%20التجريبي%20للمطعم" target="_blank" rel="noopener noreferrer" class="btn-wa">📱 واتساب</a>
+      <div>
+        ✦ خدمة استثنائية
       </div>
-    </div>
-  </section>
 
-  <footer>
-    <div class="container">
-      <div class="demo-note">نموذج تجريبي – من أعمال PROGRAMMER SAMMER</div>
-      <p>© 2026</p>
     </div>
-  </footer>
-</body>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     INTRO
+========================== -->
+
+<section class="section intro">
+
+  <div class="container">
+
+    <div class="intro-grid">
+
+      <article class="intro-card reveal">
+
+        <div class="icon">🥩</div>
+
+        <h3>
+          مكونات عالية الجودة
+        </h3>
+
+        <p>
+          نختار مكوناتنا بعناية لنضمن لك مذاقًا
+          غنيًا وجودة تظهر في كل طبق.
+        </p>
+
+      </article>
+
+
+      <article class="intro-card reveal">
+
+        <div class="icon">👨‍🍳</div>
+
+        <h3>
+          شيف بخبرة
+        </h3>
+
+        <p>
+          أطباق تجمع بين الوصفات العالمية
+          ولمساتنا الخاصة التي تميز THE TABLE.
+        </p>
+
+      </article>
+
+
+      <article class="intro-card reveal">
+
+        <div class="icon">✨</div>
+
+        <h3>
+          تجربة متكاملة
+        </h3>
+
+        <p>
+          من لحظة دخولك وحتى آخر لقمة،
+          نهتم بالتفاصيل الصغيرة التي تصنع الفرق.
+        </p>
+
+      </article>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     MENU
+========================== -->
+
+<section id="menu" class="section menu-section">
+
+  <div class="container">
+
+    <div class="section-head reveal">
+
+      <div class="section-kicker">
+        OUR MENU
+      </div>
+
+      <h2 class="section-title">
+        قائمة مختارة بعناية
+      </h2>
+
+      <p class="section-text">
+        مجموعة من أطباقنا المميزة التي تجمع بين
+        المذاق العالمي واللمسة الخاصة.
+      </p>
+
+    </div>
+
+
+    <div class="filters">
+
+      <button class="filter-btn active" data-filter="all">
+        الكل
+      </button>
+
+      <button class="filter-btn" data-filter="main">
+        الأطباق الرئيسية
+      </button>
+
+      <button class="filter-btn" data-filter="starter">
+        المقبلات
+      </button>
+
+      <button class="filter-btn" data-filter="dessert">
+        الحلويات
+      </button>
+
+      <button class="filter-btn" data-filter="drink">
+        المشروبات
+      </button>
+
+    </div>
+
+
+    <div class="menu-grid">
+
+      <!-- ITEM -->
+
+      <article class="menu-card reveal" data-category="main">
+
+        <div class="menu-img">
+
+          <img
+            src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=900&q=85"
+            alt="برجر اللحم"
+            loading="lazy"
+          >
+
+          <span class="badge">
+            الأكثر طلبًا
+          </span>
+
+        </div>
+
+        <div class="menu-content">
+
+          <div class="menu-row">
+
+            <h3>
+              برجر THE TABLE
+            </h3>
+
+            <span class="price">
+              42 ر.س
+            </span>
+
+          </div>
+
+          <p>
+            لحم بقري مشوي، جبنة، خس، طماطم،
+            بصل وصوص خاص داخل خبز بريوش.
+          </p>
+
+          <div class="menu-footer">
+
+            <span class="stars">
+              ★★★★★
+            </span>
+
+            <span>
+              طبق مميز
+            </span>
+
+          </div>
+
+        </div>
+
+      </article>
+
+
+      <article class="menu-card reveal" data-category="main">
+
+        <div class="menu-img">
+
+          <img
+            src="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?auto=format&fit=crop&w=900&q=85"
+            alt="باستا"
+            loading="lazy"
+          >
+
+        </div>
+
+        <div class="menu-content">
+
+          <div class="menu-row">
+
+            <h3>
+              باستا ترافل
+            </h3>
+
+            <span class="price">
+              48 ر.س
+            </span>
+
+          </div>
+
+          <p>
+            باستا طازجة مع صوص كريمي،
+            فطر وترافل ولمسة بارميزان.
+          </p>
+
+          <div class="menu-footer">
+
+            <span class="stars">
+              ★★★★★
+            </span>
+
+            <span>
+              شيف سبيشل
+            </span>
+
+          </div>
+
+        </div>
+
+      </article>
+
+
+      <article class="menu-card reveal" data-category="main">
+
+        <div class="menu-img">
+
+          <img
+            src="https://images.unsplash.com/photo-1532550907401-a500c9a57435?auto=format&fit=crop&w=900&q=85"
+            alt="دجاج مشوي"
+            loading="lazy"
+          >
+
+        </div>
+
+        <div class="menu-content">
+
+          <div class="menu-row">
+
+            <h3>
+              دجاج بالأعشاب
+            </h3>
+
+            <span class="price">
+              45 ر.س
+            </span>
+
+          </div>
+
+          <p>
+            دجاج مشوي بالأعشاب مع بطاطس ذهبية
+            وخضار موسمية.
+          </p>
+
+          <div class="menu-footer">
+
+            <span class="stars">
+              ★★★★☆
+            </span>
+
+            <span>
+              خفيف ولذيذ
+            </span>
+
+          </div>
+
+        </div>
+
+      </article>
+
+
+      <article class="menu-card reveal" data-category="starter">
+
+        <div class="menu-img">
+
+          <img
+            src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=900&q=85"
+            alt="سلطة"
+            loading="lazy"
+          >
+
+        </div>
+
+        <div class="menu-content">
+
+          <div class="menu-row">
+
+            <h3>
+              سلطة الشيف
+            </h3>
+
+            <span class="price">
+              24 ر.س
+            </span>
+
+          </div>
+
+          <p>
+            خضار طازجة، أفوكادو، جبنة ومكونات
+            موسمية مع صوص THE TABLE.
+          </p>
+
+          <div class="menu-footer">
+
+            <span class="stars">
+              ★★★★☆
+            </span>
+
+            <span>
+              طازجة
+            </span>
+
+          </div>
+
+        </div>
+
+      </article>
+
+
+      <article class="menu-card reveal" data-category="starter">
+
+        <div class="menu-img">
+
+          <img
+            src="https://images.unsplash.com/photo-1541014741259-de529411b96a?auto=format&fit=crop&w=900&q=85"
+            alt="مقبلات"
+            loading="lazy"
+          >
+
+        </div>
+
+        <div class="menu-content">
+
+          <div class="menu-row">
+
+            <h3>
+              طبق المقبلات
+            </h3>
+
+            <span class="price">
+              32 ر.س
+            </span>
+
+          </div>
+
+          <p>
+            تشكيلة من المقبلات الساخنة والباردة
+            المناسبة للمشاركة.
+          </p>
+
+          <div class="menu-footer">
+
+            <span class="stars">
+              ★★★★★
+            </span>
+
+            <span>
+              للمشاركة
+            </span>
+
+          </div>
+
+        </div>
+
+      </article>
+
+
+      <article class="menu-card reveal" data-category="dessert">
+
+        <div class="menu-img">
+
+          <img
+            src="https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=900&q=85"
+            alt="حلى"
+            loading="lazy"
+          >
+
+        </div>
+
+        <div class="menu-content">
+
+          <div class="menu-row">
+
+            <h3>
+              حلى THE TABLE
+            </h3>
+
+            <span class="price">
+              22 ر.س
+            </span>
+
+          </div>
+
+          <p>
+            حلى يومي يتغير حسب اختيار الشيف
+            وموسم المكونات.
+          </p>
+
+          <div class="menu-footer">
+
+            <span class="stars">
+              ★★★★★
+            </span>
+
+            <span>
+              حلى اليوم
+            </span>
+
+          </div>
+
+        </div>
+
+      </article>
+
+
+      <article class="menu-card reveal" data-category="drink">
+
+        <div class="menu-img">
+
+          <img
+            src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=900&q=85"
+            alt="قهوة"
+            loading="lazy"
+          >
+
+        </div>
+
+        <div class="menu-content">
+
+          <div class="menu-row">
+
+            <h3>
+              قهوة مختصة
+            </h3>
+
+            <span class="price">
+              18 ر.س
+            </span>
+
+          </div>
+
+          <p>
+            قهوة مختارة بعناية تُحضّر
+            بطريقة تناسب ذوقك.
+          </p>
+
+          <div class="menu-footer">
+
+            <span class="stars">
+              ★★★★★
+            </span>
+
+            <span>
+              مختصة
+            </span>
+
+          </div>
+
+        </div>
+
+      </article>
+
+
+      <article class="menu-card reveal" data-category="drink">
+
+        <div class="menu-img">
+
+          <img
+            src="https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=900&q=85"
+            alt="مشروب"
+            loading="lazy"
+          >
+
+        </div>
+
+        <div class="menu-content">
+
+          <div class="menu-row">
+
+            <h3>
+              مشروب فواكه
+            </h3>
+
+            <span class="price">
+              16 ر.س
+            </span>
+
+          </div>
+
+          <p>
+            عصير طبيعي منعش من فواكه مختارة
+            ويقدم باردًا.
+          </p>
+
+          <div class="menu-footer">
+
+            <span class="stars">
+              ★★★★☆
+            </span>
+
+            <span>
+              طبيعي
+            </span>
+
+          </div>
+
+        </div>
+
+      </article>
+
+
+      <article class="menu-card reveal" data-category="dessert">
+
+        <div class="menu-img">
+
+          <img
+            src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?auto=format&fit=crop&w=900&q=85"
+            alt="حلوى الشوكولاتة"
+            loading="lazy"
+          >
+
+        </div>
+
+        <div class="menu-content">
+
+          <div class="menu-row">
+
+            <h3>
+              شوكولاتة فاخرة
+            </h3>
+
+            <span class="price">
+              20 ر.س
+            </span>
+
+          </div>
+
+          <p>
+            شوكولاتة غنية مع لمسات من الكراميل
+            والملح البحري.
+          </p>
+
+          <div class="menu-footer">
+
+            <span class="stars">
+              ★★★★★
+            </span>
+
+            <span>
+              مفضل
+            </span>
+
+          </div>
+
+        </div>
+
+      </article>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     ABOUT
+========================== -->
+
+<section id="about" class="section about">
+
+  <div class="container about-grid">
+
+    <div class="about-image reveal">
+
+      <img
+        src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=1200&q=85"
+        alt="داخل مطعم THE TABLE"
+        loading="lazy"
+      >
+
+    </div>
+
+
+    <div class="about-content reveal">
+
+      <div class="section-kicker">
+        OUR STORY
+      </div>
+
+      <h2>
+        أكثر من مجرد
+        <span>مطعم.</span>
+      </h2>
+
+      <p>
+        بدأ THE TABLE بفكرة بسيطة:
+        أن تكون الوجبة تجربة كاملة وليست مجرد طبق.
+      </p>
+
+      <p>
+        لذلك صممنا المكان ليجمع بين الطعام
+        العالمي والأجواء الراقية والخدمة التي
+        تجعل كل زيارة مختلفة ومميزة.
+      </p>
+
+      <p>
+        من اختيار المكونات وحتى طريقة تقديم
+        كل طبق، نهتم بالتفاصيل لأننا نؤمن
+        أن التفاصيل الصغيرة هي التي تصنع الذكريات الكبيرة.
+      </p>
+
+      <div class="signature">
+
+        <span class="signature-line"></span>
+
+        <strong>
+          فريق THE TABLE
+        </strong>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     GALLERY
+========================== -->
+
+<section id="gallery" class="section gallery">
+
+  <div class="container">
+
+    <div class="section-head reveal">
+
+      <div class="section-kicker">
+        OUR SPACE
+      </div>
+
+      <h2 class="section-title">
+        أجواء المكان
+      </h2>
+
+      <p class="section-text">
+        تصميم هادئ، تفاصيل فاخرة، ومساحة مناسبة
+        للعشاء مع الأصدقاء أو العائلة.
+      </p>
+
+    </div>
+
+
+    <div class="gallery-grid">
+
+      <div class="gallery-item large reveal">
+        <img
+          src="https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=1200&q=85"
+          alt="داخل المطعم"
+          loading="lazy"
+        >
+      </div>
+
+      <div class="gallery-item reveal">
+        <img
+          src="https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=900&q=85"
+          alt="جلسات المطعم"
+          loading="lazy"
+        >
+      </div>
+
+      <div class="gallery-item reveal">
+        <img
+          src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=900&q=85"
+          alt="طاولة داخل المطعم"
+          loading="lazy"
+        >
+      </div>
+
+      <div class="gallery-item reveal">
+        <img
+          src="https://images.unsplash.com/photo-1498654896293-37aacf113fd9?auto=format&fit=crop&w=900&q=85"
+          alt="جلسة مطعم"
+          loading="lazy"
+        >
+      </div>
+
+      <div class="gallery-item reveal">
+        <img
+          src="https://images.unsplash.com/photo-1528605248644-14dd04022da1?auto=format&fit=crop&w=900&q=85"
+          alt="تجربة الطعام"
+          loading="lazy"
+        >
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     EXPERIENCE
+========================== -->
+
+<section class="experience">
+
+  <div class="container">
+
+    <div class="experience-box reveal">
+
+      <div class="section-kicker">
+        THE TABLE EXPERIENCE
+      </div>
+
+      <h2 class="section-title">
+        وجبة ستتذكرها طويلًا.
+      </h2>
+
+      <p>
+        اختر طاولتك، دعنا نهتم بالباقي.
+        نعدك بتجربة مليئة بالمذاق الجميل والتفاصيل التي تستحق المشاركة.
+      </p>
+
+      <a href="#reservation" class="btn btn-primary">
+        📅 احجز الآن
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     REVIEWS
+========================== -->
+
+<section id="reviews" class="section reviews">
+
+  <div class="container">
+
+    <div class="section-head reveal">
+
+      <div class="section-kicker">
+        GUEST REVIEWS
+      </div>
+
+      <h2 class="section-title">
+        ماذا يقول ضيوفنا؟
+      </h2>
+
+      <p class="section-text">
+        تجربة العملاء هي أفضل تقييم لنا.
+      </p>
+
+    </div>
+
+
+    <div class="reviews-grid">
+
+      <article class="review reveal">
+
+        <div class="review-stars">
+          ★★★★★
+        </div>
+
+        <p>
+          "المكان جميل جدًا والأكل ممتاز.
+          أكثر شيء أعجبني أن كل شيء مرتب
+          والتقديم راقٍ جدًا."
+        </p>
+
+        <div class="review-user">
+
+          <div class="avatar">
+            أ
+          </div>
+
+          <div>
+            <strong>
+              أحمد محمد
+            </strong>
+
+            <span>
+              عميل
+            </span>
+          </div>
+
+        </div>
+
+      </article>
+
+
+      <article class="review reveal">
+
+        <div class="review-stars">
+          ★★★★★
+        </div>
+
+        <p>
+          "من أفضل المطاعم اللي جربتها.
+          الباستا ممتازة والخدمة سريعة
+          والأجواء مناسبة جدًا للعشاء."
+        </p>
+
+        <div class="review-user">
+
+          <div class="avatar">
+            ن
+          </div>
+
+          <div>
+            <strong>
+              نورة خالد
+            </strong>
+
+            <span>
+              عميلة
+            </span>
+          </div>
+
+        </div>
+
+      </article>
+
+
+      <article class="review reveal">
+
+        <div class="review-stars">
+          ★★★★★
+        </div>
+
+        <p>
+          "تجربة رائعة من البداية للنهاية.
+          المكان أنيق والطعام يستاهل التجربة
+          وأكيد راح أرجع مرة ثانية."
+        </p>
+
+        <div class="review-user">
+
+          <div class="avatar">
+            س
+          </div>
+
+          <div>
+            <strong>
+              سامي العتيبي
+            </strong>
+
+            <span>
+              عميل
+            </span>
+          </div>
+
+        </div>
+
+      </article>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     RESERVATION
+========================== -->
+
+<section id="reservation" class="section reservation">
+
+  <div class="container reservation-grid">
+
+    <div class="reservation-info reveal">
+
+      <div class="section-kicker">
+        RESERVATION
+      </div>
+
+      <h2>
+        احجز طاولتك
+        <span>اليوم.</span>
+      </h2>
+
+      <p>
+        خطط لزيارتك مسبقًا واستمتع بتجربتك
+        دون انتظار. املأ النموذج وسنتواصل معك
+        لتأكيد الحجز.
+      </p>
+
+
+      <div class="contact-list">
+
+        <div class="contact-item">
+
+          <i>📍</i>
+
+          <span>
+            طريق الملك فهد، الرياض
+          </span>
+
+        </div>
+
+        <div class="contact-item">
+
+          <i>☎️</i>
+
+          <span>
+            920000000
+          </span>
+
+        </div>
+
+        <div class="contact-item">
+
+          <i>✉️</i>
+
+          <span>
+            hello@thetable.sa
+          </span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <form
+      class="reservation-form reveal"
+      id="reservationForm"
+    >
+
+      <div class="form-grid">
+
+        <div class="field">
+
+          <label for="name">
+            الاسم
+          </label>
+
+          <input
+            id="name"
+            type="text"
+            placeholder="اكتب اسمك"
+            required
+          >
+
+        </div>
+
+
+        <div class="field">
+
+          <label for="phone">
+            رقم الجوال
+          </label>
+
+          <input
+            id="phone"
+            type="tel"
+            placeholder="05xxxxxxxx"
+            required
+          >
+
+        </div>
+
+
+        <div class="field">
+
+          <label for="date">
+            التاريخ
+          </label>
+
+          <input
+            id="date"
+            type="date"
+            required
+          >
+
+        </div>
+
+
+        <div class="field">
+
+          <label for="time">
+            الوقت
+          </label>
+
+          <select id="time" required>
+
+            <option value="">
+              اختر الوقت
+            </option>
+
+            <option>
+              6:00 مساءً
+            </option>
+
+            <option>
+              7:00 مساءً
+            </option>
+
+            <option>
+              8:00 مساءً
+            </option>
+
+            <option>
+              9:00 مساءً
+            </option>
+
+            <option>
+              10:00 مساءً
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <div class="field">
+
+          <label for="guests">
+            عدد الأشخاص
+          </label>
+
+          <select id="guests" required>
+
+            <option value="">
+              اختر العدد
+            </option>
+
+            <option>
+              شخص واحد
+            </option>
+
+            <option>
+              شخصان
+            </option>
+
+            <option>
+              3 أشخاص
+            </option>
+
+            <option>
+              4 أشخاص
+            </option>
+
+            <option>
+              5 أشخاص
+            </option>
+
+            <option>
+              6+ أشخاص
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <div class="field">
+
+          <label for="occasion">
+            المناسبة
+          </label>
+
+          <select id="occasion">
+
+            <option>
+              بدون مناسبة
+            </option>
+
+            <option>
+              عيد ميلاد
+            </option>
+
+            <option>
+              ذكرى
+            </option>
+
+            <option>
+              مناسبة خاصة
+            </option>
+
+            <option>
+              اجتماع عمل
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <div class="field full">
+
+          <label for="message">
+            ملاحظات إضافية
+          </label>
+
+          <textarea
+            id="message"
+            placeholder="أي طلبات خاصة..."
+          ></textarea>
+
+        </div>
+
+      </div>
+
+
+      <button type="submit" class="btn btn-primary form-submit">
+        تأكيد طلب الحجز
+      </button>
+
+    </form>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     LOCATION
+========================== -->
+
+<section id="location" class="section location">
+
+  <div class="container">
+
+    <div class="section-head reveal">
+
+      <div class="section-kicker">
+        VISIT US
+      </div>
+
+      <h2 class="section-title">
+        زورونا في الرياض
+      </h2>
+
+      <p class="section-text">
+        نحن بانتظاركم لتجربة مختلفة.
+      </p>
+
+    </div>
+
+
+    <div class="location-grid">
+
+
+      <div class="location-card reveal">
+
+        <div class="icon">
+          📍
+        </div>
+
+        <h3>
+          موقع المطعم
+        </h3>
+
+        <p class="address">
+          طريق الملك فهد، حي العليا،
+          الرياض، المملكة العربية السعودية
+        </p>
+
+        <a
+          href="https://www.google.com/maps/search/?api=1&query=King+Fahd+Road+Riyadh"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-outline map-button"
+        >
+          🗺️ افتح Google Maps
+        </a>
+
+      </div>
+
+
+      <div class="location-card reveal">
+
+        <div class="icon">
+          🕒
+        </div>
+
+        <h3>
+          ساعات العمل
+        </h3>
+
+        <div class="hours-list">
+
+          <div class="hours-row">
+            <span>السبت – الخميس</span>
+            <strong>12:00 م – 12:00 ص</strong>
+          </div>
+
+          <div class="hours-row">
+            <span>الجمعة</span>
+            <strong>2:00 م – 12:00 ص</strong>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     CTA
+========================== -->
+
+<section class="cta">
+
+  <div class="container cta-inner reveal">
+
+    <div>
+
+      <h2>
+        جاهز لتجربة THE TABLE؟
+      </h2>
+
+      <p>
+        احجز طاولتك واستمتع بوجبة تستحق التذكر.
+      </p>
+
+    </div>
+
+    <a href="#reservation" class="btn btn-primary">
+      احجز طاولتك الآن
+    </a>
+
+  </div>
+
+</section>
+
+  </main>  <!-- =========================
+       FOOTER
+  ========================== -->  <footer><div class="container">
+
+  <div class="footer-grid">
+
+    <div class="footer-brand">
+
+      <div class="brand">
+
+        <div class="brand-mark">
+          🍽️
+        </div>
+
+        <div class="brand-text">
+
+          <div class="brand-title">
+            THE TABLE
+          </div>
+
+          <span class="brand-sub">
+            GLOBAL DINING EXPERIENCE
+          </span>
+
+        </div>
+
+      </div>
+
+      <p>
+        نموذج تجريبي لموقع مطعم فاخر،
+        مصمم لعرض تجربة المستخدم وتصميم
+        مواقع المطاعم الحديثة.
+      </p>
+
+    </div>
+
+
+    <div class="footer-col">
+
+      <h4>
+        روابط سريعة
+      </h4>
+
+      <a href="#home">
+        الرئيسية
+      </a>
+
+      <a href="#menu">
+        القائمة
+      </a>
+
+      <a href="#about">
+        عن المطعم
+      </a>
+
+      <a href="#gallery">
+        المعرض
+      </a>
+
+    </div>
+
+
+    <div class="footer-col">
+
+      <h4>
+        خدماتنا
+      </h4>
+
+      <a href="#reservation">
+        حجز الطاولات
+      </a>
+
+      <a href="#menu">
+        قائمة الطعام
+      </a>
+
+      <a href="#location">
+        موقعنا
+      </a>
+
+      <a href="#reviews">
+        تقييمات العملاء
+      </a>
+
+    </div>
+
+
+    <div class="footer-col">
+
+      <h4>
+        تواصل
+      </h4>
+
+      <a href="tel:920000000">
+        920000000
+      </a>
+
+      <a href="mailto:hello@thetable.sa">
+        hello@thetable.sa
+      </a>
+
+      <a
+        href="https://www.instagram.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Instagram
+      </a>
+
+    </div>
+
+  </div>
+
+
+  <div class="footer-bottom">
+
+    <span class="demo-note">
+      نموذج تجريبي – من أعمال PROGRAMMER SAMMER
+    </span>
+
+    <span>
+      © 2026 THE TABLE — جميع الحقوق محفوظة
+    </span>
+
+  </div>
+
+</div>
+
+  </footer>  <!-- =========================
+       FLOATING BUTTONS
+  ========================== --><button
+class="scroll-top"
+id="scrollTop"
+aria-label="العودة للأعلى"
+
+«»
+
+↑
+
+  </button><a
+class="whatsapp"
+href="https://wa.me/966576124840?text=السلام%20عليكم%20شاهدت%20نموذج%20THE%20TABLE%20التجريبي"
+target="_blank"
+rel="noopener noreferrer"
+aria-label="التواصل عبر واتساب"
+
+«»
+
+☎
+
+  </a>  <script>
+
+    /* =========================
+       FILTER MENU
+    ========================== */
+
+    const filterButtons = document.querySelectorAll(".filter-btn");
+    const menuCards = document.querySelectorAll(".menu-card");
+
+    filterButtons.forEach(button => {
+
+      button.addEventListener("click", () => {
+
+        filterButtons.forEach(btn =>
+          btn.classList.remove("active")
+        );
+
+        button.classList.add("active");
+
+        const filter = button.dataset.filter;
+
+        menuCards.forEach(card => {
+
+          const category = card.dataset.category;
+
+          if(filter === "all" || category === filter){
+
+            card.style.display = "block";
+
+            setTimeout(() => {
+              card.style.opacity = "1";
+              card.style.transform = "translateY(0)";
+            }, 30);
+
+          }else{
+
+            card.style.opacity = "0";
+            card.style.transform = "translateY(10px)";
+
+            setTimeout(() => {
+              card.style.display = "none";
+            }, 200);
+
+          }
+
+        });
+
+      });
+
+    });
+
+
+    /* =========================
+       REVEAL ON SCROLL
+    ========================== */
+
+    const revealElements =
+      document.querySelectorAll(".reveal");
+
+    const revealObserver =
+      new IntersectionObserver(
+        entries => {
+
+          entries.forEach(entry => {
+
+            if(entry.isIntersecting){
+
+              entry.target.classList.add("active");
+
+              revealObserver.unobserve(entry.target);
+
+            }
+
+          });
+
+        },
+        {
+          threshold:.12
+        }
+      );
+
+
+    revealElements.forEach(element => {
+      revealObserver.observe(element);
+    });
+
+
+    /* =========================
+       SCROLL TOP
+    ========================== */
+
+    const scrollTop =
+      document.getElementById("scrollTop");
+
+    window.addEventListener("scroll", () => {
+
+      if(window.scrollY > 500){
+
+        scrollTop.classList.add("show");
+
+      }else{
+
+        scrollTop.classList.remove("show");
+
+      }
+
+    });
+
+
+    scrollTop.addEventListener("click", () => {
+
+      window.scrollTo({
+        top:0,
+        behavior:"smooth"
+      });
+
+    });
+
+
+    /* =========================
+       RESERVATION FORM
+    ========================== */
+
+    const reservationForm =
+      document.getElementById("reservationForm");
+
+    reservationForm.addEventListener("submit", function(event){
+
+      event.preventDefault();
+
+      const name =
+        document.getElementById("name").value.trim();
+
+      const phone =
+        document.getElementById("phone").value.trim();
+
+      const date =
+        document.getElementById("date").value;
+
+      const time =
+        document.getElementById("time").value;
+
+      const guests =
+        document.getElementById("guests").value;
+
+      if(!name || !phone || !date || !time || !guests){
+
+        alert("فضلاً أكمل جميع الحقول المطلوبة.");
+
+        return;
+
+      }
+
+      const message =
+        `السلام عليكم، أرغب بحجز طاولة في THE TABLE.%0A%0A` +
+        `الاسم: ${encodeURIComponent(name)}%0A` +
+        `الجوال: ${encodeURIComponent(phone)}%0A` +
+        `التاريخ: ${encodeURIComponent(date)}%0A` +
+        `الوقت: ${encodeURIComponent(time)}%0A` +
+        `عدد الأشخاص: ${encodeURIComponent(guests)}`;
+
+      window.open(
+        `https://wa.me/966576124840?text=${message}`,
+        "_blank"
+      );
+
+    });
+
+
+    /* =========================
+       CLOSE MOBILE MENU
+    ========================== */
+
+    const navToggle =
+      document.getElementById("nav-toggle");
+
+    const navLinks =
+      document.querySelectorAll(".nav-links a");
+
+    navLinks.forEach(link => {
+
+      link.addEventListener("click", () => {
+
+        navToggle.checked = false;
+
+      });
+
+    });
+
+
+    /* =========================
+       DATE MINIMUM
+    ========================== */
+
+    const dateInput =
+      document.getElementById("date");
+
+    const today =
+      new Date().toISOString().split("T")[0];
+
+    dateInput.min = today;
+
+
+    /* =========================
+       CURRENT YEAR
+    ========================== */
+
+    const year =
+      new Date().getFullYear();
+
+    const footerYear =
+      document.querySelector(".footer-bottom span:last-child");
+
+    if(footerYear){
+
+      footerYear.innerHTML =
+        `© ${year} THE TABLE — جميع الحقوق محفوظة`;
+
+    }
+
+  </script></body>
 </html>
