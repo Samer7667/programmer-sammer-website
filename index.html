@@ -3,309 +3,264 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>PROGRAMMER SAMMER | تطوير مواقع للمشاريع</title>
-  <meta name="description" content="أبني مواقع تعريفية احترافية للمقاهي والمطاعم والمشاريع المحلية في الرياض. شاهد أعمالي وتواصل معي.">
-  <style>
-    * { margin:0; padding:0; box-sizing:border-box; }
-    :root {
-      --bg:#070b12;
-      --bg2:#0d131e;
-      --card:#101826;
-      --line:#1f2b3a;
-      --text:#e9edf5;
-      --muted:#9aa8b9;
-      --cyan:#39d0d8;
-      --cyan-dark:#1b9aa4;
-      --green:#3ddc84;
-      --grad:linear-gradient(135deg, #0d1b2a, #1a2f3f);
-    }
-    body {
-      font-family:'Segoe UI', Tahoma, 'Helvetica Neue', sans-serif;
-      background:var(--bg);
-      color:var(--text);
-      line-height:1.7;
-      overflow-x:hidden;
-    }
-    .container { width:min(1100px, 92%); margin:0 auto; }
-    a { color:inherit; text-decoration:none; }
-
-    /* header */
-    .nav-wrap { position:sticky; top:0; z-index:100; background:rgba(7,11,18,0.85); backdrop-filter:blur(12px); border-bottom:1px solid var(--line); }
-    .nav { display:flex; align-items:center; justify-content:space-between; padding:1rem 0; }
-    .brand { display:flex; align-items:center; gap:0.8rem; font-weight:700; font-size:1.4rem; letter-spacing:0.5px; }
-    .brand img { width:44px; height:44px; border-radius:10px; object-fit:cover; border:1px solid var(--line); }
-    .brand span b { color:var(--cyan); }
-    .nav-links { display:flex; align-items:center; gap:2rem; }
-    .nav-links a:not(.btn) { font-weight:500; transition:0.3s; }
-    .nav-links a:not(.btn):hover { color:var(--cyan); }
-    .btn {
-      display:inline-block; background:var(--cyan); color:#041016; font-weight:700; padding:0.8rem 1.8rem;
-      border-radius:50px; font-size:0.95rem; transition:0.3s; border:1px solid transparent; cursor:pointer; text-align:center;
-    }
-    .btn:hover { background:var(--cyan-dark); color:white; transform:translateY(-3px); box-shadow:0 12px 25px -10px rgba(57,208,216,0.5); }
-    .btn-outline { background:transparent; border:2px solid var(--cyan); color:var(--cyan); }
-    .btn-outline:hover { background:var(--cyan); color:#041016; }
-    .btn-small { padding:0.5rem 1.2rem; font-size:0.85rem; }
-
-    /* hero */
-    .hero { position:relative; padding:5rem 0 4rem; background:radial-gradient(ellipse at 10% 20%, #0b1a2a, transparent 60%), var(--bg); }
-    .hero-grid { display:grid; grid-template-columns:1fr 1.1fr; gap:3rem; align-items:center; }
-    .eyebrow { color:var(--cyan); font-weight:600; letter-spacing:2px; font-size:0.9rem; margin-bottom:1rem; text-transform:uppercase; }
-    .hero h1 { font-size:3.2rem; line-height:1.3; margin-bottom:1.5rem; font-weight:800; }
-    .hero h1 span { color:var(--cyan); }
-    .lead { color:var(--muted); font-size:1.2rem; max-width:500px; margin-bottom:2rem; }
-    .hero-actions { display:flex; gap:1rem; margin-bottom:2rem; flex-wrap:wrap; }
-    .trust-row { display:flex; gap:1.5rem; flex-wrap:wrap; color:var(--green); font-weight:600; font-size:0.95rem; }
-
-    /* hero mockup */
-    .hero-card { position:relative; display:flex; justify-content:center; }
-    .browser-frame { background:var(--card); border:1px solid var(--line); border-radius:18px; overflow:hidden; width:100%; max-width:520px; box-shadow:0 25px 50px -12px rgba(0,0,0,0.7); transition:transform 0.3s; }
-    .browser-top { display:flex; align-items:center; gap:6px; background:#111a26; padding:0.75rem 1rem; border-bottom:1px solid var(--line); }
-    .browser-top span { width:12px; height:12px; border-radius:50%; display:inline-block; }
-    .browser-top .red { background:#ff5f57; } .browser-top .yellow { background:#febc2e; } .browser-top .green { background:#28c840; }
-    .browser-url { flex:1; background:#0c121d; border-radius:20px; padding:0.2rem 1rem; font-size:0.75rem; color:var(--muted); margin-inline-start:10px; }
-    .mockup-content { padding:1.5rem; display:flex; flex-direction:column; gap:1.2rem; background:#0b111e; }
-    .mockup-header { display:flex; justify-content:space-between; align-items:center; }
-    .mockup-logo { width:40px; height:40px; background:var(--cyan); border-radius:10px; opacity:0.8; }
-    .mockup-nav { display:flex; gap:10px; } .mockup-nav span { background:var(--line); width:35px; height:8px; border-radius:4px; display:block; }
-    .mockup-hero { background:linear-gradient(145deg, #112233, #1a2e42); border-radius:12px; padding:2rem; text-align:center; }
-    .mockup-hero h4 { font-size:1.5rem; margin-bottom:0.5rem; } .mockup-hero p { color:var(--muted); font-size:0.9rem; }
-    .mockup-buttons { display:flex; gap:0.5rem; justify-content:center; } .mockup-buttons div { background:var(--cyan); padding:0.5rem 1.2rem; border-radius:20px; font-size:0.8rem; font-weight:700; color:#041016; }
-    .mockup-cards { display:grid; grid-template-columns:repeat(3,1fr); gap:0.8rem; }
-    .mockup-card { background:var(--card); border-radius:10px; padding:1rem; display:flex; flex-direction:column; align-items:center; }
-    .mockup-card i { display:block; width:30px; height:30px; background:var(--cyan); opacity:0.5; border-radius:50%; margin-bottom:0.5rem; }
-    .mockup-card span { background:var(--line); height:6px; width:80%; border-radius:4px; }
-    .badge-float { position:absolute; bottom:20px; right:0; background:var(--green); color:#031008; font-weight:700; padding:0.6rem 1.2rem; border-radius:30px; font-size:0.85rem; box-shadow:0 10px 20px rgba(0,0,0,0.5); display:flex; align-items:center; gap:0.4rem; }
-    @media(max-width:900px) { .hero-grid { grid-template-columns:1fr; } .hero h1 { font-size:2.5rem; } }
-
-    /* sections */
-    .section { padding:4rem 0; }
-    .section-head { display:flex; justify-content:space-between; align-items:end; margin-bottom:2.5rem; flex-wrap:wrap; gap:1rem; }
-    .section-head h2 { font-size:2.2rem; font-weight:800; }
-    .section-head p { color:var(--muted); max-width:400px; }
-    .cards { display:grid; grid-template-columns:repeat(auto-fit, minmax(240px,1fr)); gap:1.5rem; }
-    .service { background:var(--card); border:1px solid var(--line); border-radius:20px; padding:2rem 1.5rem; transition:0.3s; }
-    .service:hover { transform:translateY(-8px); border-color:var(--cyan); box-shadow:0 20px 30px -15px rgba(57,208,216,0.15); }
-    .service span { color:var(--cyan); font-weight:700; font-size:1.2rem; display:block; margin-bottom:1rem; }
-    .service h3 { font-size:1.5rem; margin-bottom:0.5rem; }
-
-    /* demo / portfolio */
-    .section-dark { background:var(--bg2); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
-    .demo-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(260px,1fr)); gap:1.5rem; }
-    .demo { background:var(--card); border:1px solid var(--line); border-radius:20px; padding:2rem 1.5rem; transition:0.3s; position:relative; overflow:hidden; display:flex; flex-direction:column; }
-    .demo:hover { transform:translateY(-8px); border-color:var(--cyan); }
-    .demo-tag { display:inline-block; background:var(--cyan); color:#041016; padding:0.3rem 1rem; border-radius:20px; font-weight:700; font-size:0.75rem; letter-spacing:1px; margin-bottom:1rem; width:fit-content; }
-    .demo h3 { font-size:1.5rem; margin-bottom:0.8rem; }
-    .demo p { color:var(--muted); flex:1; }
-    .demo span { color:var(--cyan); font-weight:600; margin-top:1rem; display:block; }
-    .demo-thumb { height:140px; background:var(--grad); border-radius:12px; margin-bottom:1.2rem; position:relative; overflow:hidden; }
-    .demo-thumb::after { content:""; position:absolute; inset:0; background:rgba(255,255,255,0.05); }
-    .demo-thumb .mock { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); color:var(--text); font-weight:700; }
-
-    /* about */
-    .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:center; }
-    .about-photo img { width:100%; border-radius:20px; border:1px solid var(--line); background:var(--card); }
-    .about-text { color:var(--muted); margin-bottom:2rem; font-size:1.1rem; }
-    .proof { display:flex; gap:2rem; flex-wrap:wrap; }
-    .proof div { display:flex; flex-direction:column; }
-    .proof b { color:var(--cyan); font-size:1.2rem; }
-    .proof span { color:var(--muted); }
-    @media(max-width:800px) { .about-grid { grid-template-columns:1fr; } }
-
-    /* credentials */
-    .credential-box { background:#0b1018; border:1px solid var(--line); border-radius:24px; padding:2.5rem; max-width:550px; width:100%; text-align:center; margin:0 auto; box-shadow:0 15px 30px rgba(0,0,0,0.5); }
-    .credential-image { width:100%; border-radius:12px; margin-bottom:1.5rem; filter:drop-shadow(0 0 15px rgba(57,208,216,0.3)); }
-    .credential-box p { color:var(--cyan); font-size:1rem; font-weight:bold; }
-
-    /* pricing */
-    .pricing { background:var(--bg); }
-    .price-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(260px,1fr)); gap:1.5rem; }
-    .price-card { background:var(--card); border:1px solid var(--line); border-radius:20px; padding:2rem; text-align:center; transition:0.3s; position:relative; }
-    .price-card.featured { border-color:var(--cyan); box-shadow:0 0 0 2px rgba(57,208,216,0.3), 0 25px 40px -20px rgba(57,208,216,0.4); }
-    .badge { position:absolute; top:-12px; left:50%; transform:translateX(-50%); background:var(--cyan); color:#041016; padding:0.4rem 1.5rem; border-radius:20px; font-weight:700; font-size:0.8rem; }
-    .price { font-size:2.8rem; font-weight:800; margin:1rem 0; }
-    .price small { font-size:1rem; color:var(--muted); }
-    .price-card ul { list-style:none; margin-bottom:1.5rem; }
-    .price-card li { padding:0.5rem 0; color:var(--muted); }
-    .price-card li::before { content:"✓"; color:var(--green); margin-inline-end:0.5rem; }
-
-    /* contact */
-    .contact-box { background:var(--grad); border:1px solid var(--line); border-radius:30px; padding:3rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:2rem; }
-    .contact-box h2 { font-size:2rem; margin-bottom:0.5rem; }
-    .contact-box p { color:var(--muted); max-width:500px; }
-
-    footer { border-top:1px solid var(--line); padding:2rem 0; text-align:center; color:var(--muted); }
-    .footer { display:flex; justify-content:space-between; flex-wrap:wrap; gap:1rem; }
-
-    .credential-image { animation:glowPulse 2.5s infinite; }
-    @keyframes glowPulse { 0% { filter:drop-shadow(0 0 10px rgba(57,208,216,0.2)); } 50% { filter:drop-shadow(0 0 25px rgba(57,208,216,0.7)); } 100% { filter:drop-shadow(0 0 10px rgba(57,208,216,0.2)); } }
-  </style>
+  <title>PROGRAMMER SAMMER | تصميم وتطوير مواقع للمشاريع المحلية</title>
+  <meta name="description" content="أبني مواقع تعريفية احترافية للمقاهي والمطاعم والمخابز في الرياض. تصميم متجاوب، واتساب، خرائط، وثيقة عمل حر.">
+  
+  <!-- ===== قم بتغيير الرابط إلى دومينك الفعلي قبل النشر ===== -->
+  <link rel="canonical" href="https://programmersammer.com/">
+  
+  <!-- ===== Open Graph ===== -->
+  <meta property="og:title" content="PROGRAMMER SAMMER – مواقع احترافية لنشاطك">
+  <meta property="og:description" content="أبني مواقع تعريفية للمقاهي والمطاعم والمشاريع المحلية. جاهزة للجوال، مع واتساب وخرائط.">
+  <!-- ===== استبدل الرابط بصورة OG مخصصة (يفضل 1200x630) ===== -->
+  <meta property="og:image" content="https://programmersammer.com/og-image.jpg">
+  <meta property="og:url" content="https://programmersammer.com">
+  <meta name="twitter:card" content="summary_large_image">
+  
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💻</text></svg>">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<header class="nav-wrap">
-  <nav class="container nav">
-    <a class="brand" href="#top" aria-label="PROGRAMMER SAMMER">
-      <img src="logo.jpg" alt="PROGRAMMER SAMMER">
-      <span>PROGRAMMER <b>SAMMER</b></span>
-    </a>
-    <div class="nav-links">
-      <a href="#services">الخدمات</a>
-      <a href="#work">أعمالي</a>
-      <a href="#about">من أنا</a>
-      <a href="#credentials">الوثيقة</a>
-      <a class="btn btn-small" href="#contact">اطلب موقعك</a>
-    </div>
-  </nav>
-</header>
-
-<main id="top">
-  <!-- Hero جديد: تركيز على أصحاب الأعمال + عرض بصري لمشروع -->
-  <section class="hero">
-    <div class="container hero-grid">
-      <div>
-        <div class="eyebrow">WEB DEVELOPER • RIYADH</div>
-        <h1>أبني مواقع تجعل <span>نشاطك يظهر</span> ويصل لعملائك</h1>
-        <p class="lead">أنا سامر، مطور مواقع متخصص في تصميم مواقع تعريفية للمقاهي والمطاعم والمشاريع المحلية. أقدم موقعًا سريعًا ومتجاوبًا مع زر واتساب وخرائط وقائمة خدمات واضحة — كل ما يحتاجه عميلك ليتواصل معك.</p>
-        <div class="hero-actions">
-          <a class="btn" href="#contact">أريد موقعًا لنشاطي</a>
-          <a class="btn btn-outline" href="#work">شاهد أعمالي</a>
-        </div>
-        <div class="trust-row">
-          <span>✓ تصميم متجاوب</span>
-          <span>✓ واتساب وخرائط</span>
-          <span>✓ منيو وخدمات</span>
-        </div>
+  <header class="nav-wrap">
+    <nav class="container nav">
+      <a class="brand" href="#top">
+        <img src="logo.jpg" alt="PROGRAMMER SAMMER">
+        <span>PROGRAMMER <b>SAMMER</b></span>
+      </a>
+      <input type="checkbox" id="nav-toggle" hidden>
+      <label for="nav-toggle" class="nav-toggle-label">
+        <span></span><span></span><span></span>
+      </label>
+      <div class="nav-links" id="nav-links">
+        <a href="#services">الخدمات</a>
+        <a href="#work">أعمالي</a>
+        <a href="#about">من أنا</a>
+        <a href="#pricing">الباقات</a>
+        <a class="btn btn-small" href="#contact">أرني كيف سيبدو نشاطي</a>
       </div>
-      <div class="hero-card">
-        <!-- بدلاً من الكود: نموذج حي لموقع كوفي -->
-        <div class="browser-frame">
-          <div class="browser-top">
-            <span class="red"></span><span class="yellow"></span><span class="green"></span>
-            <span class="browser-url">sammer.dev/demo-cafe</span>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">WEB DEVELOPMENT • RIYADH</div>
+          <h1>موقع احترافي يجعل <span>نشاطك جاهزًا</span> لعملاء اليوم.</h1>
+          <p class="lead">من المنيو وخرائط Google إلى واتساب ومعلومات نشاطك — أبني لك حضورًا رقميًا واضحًا ومناسبًا للجوال.</p>
+          <div class="hero-actions">
+            <a class="btn" href="#contact">أرني كيف سيبدو نشاطي</a>
+            <a class="btn btn-outline" href="#work">شاهد النماذج</a>
           </div>
-          <div class="mockup-content">
-            <div class="mockup-header">
-              <div class="mockup-logo"></div>
-              <div class="mockup-nav"><span></span><span></span><span></span><span></span></div>
-            </div>
-            <div class="mockup-hero">
-              <h4>قهوة ومخبوزات</h4>
-              <p>منيو • موقع • اطلب الآن</p>
-              <div class="mockup-buttons"><div>اتصل بنا</div></div>
-            </div>
-            <div class="mockup-cards">
-              <div class="mockup-card"><i></i><span></span></div>
-              <div class="mockup-card"><i></i><span></span></div>
-              <div class="mockup-card"><i></i><span></span></div>
-            </div>
+          <div class="trust-row">
+            <span>✓ متوافق مع الجوال</span>
+            <span>✓ واتساب وخرائط</span>
+            <span>✓ تصميم مخصص</span>
           </div>
         </div>
-        <div class="badge-float">● موقع كوفي جاهز</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- الخدمات -->
-  <section id="services" class="section">
-    <div class="container">
-      <div class="section-head">
-        <div><div class="eyebrow">WHAT I BUILD</div><h2>خدمات واضحة، بدون تعقيد</h2></div>
-        <p>أركز على ما يحتاجه نشاطك فعليًا لجذب العملاء وتسهيل التواصل معهم.</p>
-      </div>
-      <div class="cards">
-        <article class="service"><span>01</span><h3>موقع تعريفي</h3><p>نبذة، خدمات، صور، معلومات التواصل، ساعات العمل وروابط التواصل الاجتماعي.</p></article>
-        <article class="service"><span>02</span><h3>موقع كوفي أو مطعم</h3><p>عرض المنيو، الصور، الموقع، زر واتساب وتجربة مصممة للجوال.</p></article>
-        <article class="service"><span>03</span><h3>تحديث وتحسين</h3><p>إعادة تصميم صفحات قديمة، إضافة أقسام وإصلاحات وتحسين تجربة المستخدم.</p></article>
-      </div>
-    </div>
-  </section>
-
-  <!-- قسم الأعمال (Portfolio) -->
-  <section id="work" class="section section-dark">
-    <div class="container">
-      <div class="section-head light">
-        <div><div class="eyebrow">MY WORK</div><h2>نماذج من مشاريعي</h2></div>
-        <p>هذه نماذج قمت بتطويرها لعرض أسلوبي، ويمكن تخصيصها لتناسب نشاطك تمامًا.</p>
-      </div>
-      <div class="demo-grid">
-        <a class="demo" href="demos/cafe.html">
-          <div class="demo-thumb"><span class="mock">☕ كوفي</span></div>
-          <div class="demo-tag">COFFEE</div>
-          <h3>موقع كوفي</h3>
-          <p>واجهة أنيقة + منيو + موقع + واتساب</p>
-          <span>فتح النموذج ←</span>
-        </a>
-        <a class="demo" href="demos/bakery.html">
-          <div class="demo-thumb"><span class="mock">🥐 مخبز</span></div>
-          <div class="demo-tag">BREAKFAST</div>
-          <h3>موقع فطائر وفطور</h3>
-          <p>منتجات صباحية + طلب سريع + معلومات الفرع</p>
-          <span>فتح النموذج ←</span>
-        </a>
-        <a class="demo" href="demos/restaurant.html">
-          <div class="demo-thumb"><span class="mock">🍽️ مطعم</span></div>
-          <div class="demo-tag">RESTAURANT</div>
-          <h3>موقع مطعم</h3>
-          <p>قائمة طعام + معرض صور + بيانات التواصل</p>
-          <span>فتح النموذج ←</span>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- من أنا -->
-  <section id="about" class="section">
-    <div class="container about-grid">
-      <div class="about-photo"><img src="logo.jpg" alt="هوية PROGRAMMER SAMMER"></div>
-      <div>
-        <div class="eyebrow">ABOUT SAMMER</div>
-        <h2>من أنا؟</h2>
-        <p class="about-text">أنا سامر، مطور مواقع إلكترونية أركز على بناء مواقع تعريفية احترافية للمشاريع والمنشآت الصغيرة. هدفي أن أجعل نشاطك ظاهرًا بشكل أفضل على الإنترنت، وأن يصل العميل إلى المنيو والموقع وطرق التواصل بسهولة.</p>
-        <div class="proof">
-          <div><b>خدمة</b><span>تطوير مواقع إلكترونية</span></div>
-          <div><b>التركيز</b><span>مشاريع محلية ومشاريع صغيرة</span></div>
-          <div><b>العمل</b><span>الرياض وما حولها</span></div>
+        <div class="hero-card">
+          <div class="browser-frame">
+            <div class="browser-top">
+              <span class="red"></span><span class="yellow"></span><span class="green"></span>
+              <span class="browser-url">yourcafe.sammer.dev</span>
+            </div>
+            <div class="mockup-content">
+              <div class="mockup-header"><div class="mockup-logo"></div><div class="mockup-nav"><span></span><span></span><span></span></div></div>
+              <div class="mockup-hero"><h4>☕ Coffee House</h4><p>قهوة مختصة • منيو • موقع</p><div class="mockup-buttons"><div>تواصل واتساب</div></div></div>
+              <div class="mockup-cards"><div class="mockup-card"><i></i><span>اسبريسو</span></div><div class="mockup-card"><i></i><span>لاتيه</span></div><div class="mockup-card"><i></i><span>كرواسان</span></div></div>
+            </div>
+          </div>
+          <div class="badge-float">● موقع جاهز لنشاطك</div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- الوثيقة -->
-  <section id="credentials" class="section" style="padding-top:0;">
-    <div class="container">
-      <div class="section-head">
-        <div><div class="eyebrow">OFFICIAL LICENSE</div><h2>وثيقة العمل الحر المعتمدة</h2></div>
-        <p>مسجل رسمياً في وزارة الموارد البشرية والتنمية الاجتماعية كمطور مواقع إلكترونية.</p>
+    <section class="section section-dark" style="padding: 3rem 0;">
+      <div class="container" style="text-align:center;">
+        <div class="eyebrow">PERFECT FOR YOU IF</div>
+        <h2 style="font-size:2rem;">هذا الموقع مناسب لك إذا:</h2>
+        <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap:1.5rem; margin-top:2rem;">
+          <div style="background:var(--card); padding:1.5rem; border-radius:16px; border:1px solid var(--line);">✅ لديك نشاط قائم ولا تملك موقعًا.</div>
+          <div style="background:var(--card); padding:1.5rem; border-radius:16px; border:1px solid var(--line);">✅ تعتمد فقط على Instagram أو WhatsApp.</div>
+          <div style="background:var(--card); padding:1.5rem; border-radius:16px; border:1px solid var(--line);">✅ تريد عرض المنيو والخدمات والموقع بطريقة احترافية.</div>
+          <div style="background:var(--card); padding:1.5rem; border-radius:16px; border:1px solid var(--line);">✅ تريد رابطًا واحدًا ترسله للعملاء يوضح كل شيء.</div>
+        </div>
       </div>
-      <div class="credential-box">
-        <img src="image.png" alt="وثيقة العمل الحر - PROGRAMMER SAMMER" class="credential-image">
-        <p>✅ وثيقة ممارس حر معتمدة<br>
-        <span style="color:#9aa8b9; font-weight:normal; font-size:0.9rem;">رمز التوثيق: <b style="color:#fff;">FL-290987510</b></span></p>
+    </section>
+
+    <section class="section" id="services">
+      <div class="container">
+        <div class="section-head"><div><div class="eyebrow">FOR WHOM</div><h2>موقعك مصمم لنشاطك</h2></div><p>نفهم طبيعة عملك ونبني لك ما يناسبك.</p></div>
+        <div class="cards four-cards">
+          <article class="service"><span>☕</span><h3>المقاهي</h3><p>موقع يعرض المنيو والموقع والصور ووسائل التواصل.</p></article>
+          <article class="service"><span>🍽️</span><h3>المطاعم</h3><p>واجهة احترافية لعرض الأطباق والخدمات ومعلومات النشاط.</p></article>
+          <article class="service"><span>🥐</span><h3>المخابز والفطائر</h3><p>اعرض منتجاتك وموقعك وطرق التواصل بطريقة جذابة.</p></article>
+          <article class="service"><span>🏪</span><h3>المشاريع المحلية</h3><p>موقع تعريفي يجعل العملاء يعرفونك ويصلون إليك بسهولة.</p></article>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- الباقات -->
-  <section class="section pricing">
-    <div class="container">
-      <div class="section-head"><div><div class="eyebrow">STARTING PACKAGES</div><h2>باقات مبدئية</h2></div><p>الأسعار المعروضة نقطة بداية ويمكن تعديلها حسب احتياج المشروع.</p></div>
-      <div class="price-grid">
-        <div class="price-card"><h3>أساسية</h3><div class="price">499 <small>ر.س</small></div><ul><li>صفحة واحدة</li><li>معلومات النشاط</li><li>واتساب + خرائط</li></ul><a href="#contact" class="btn btn-outline">اطلبها</a></div>
-        <div class="price-card featured"><div class="badge">الأكثر مناسبة</div><h3>احترافية</h3><div class="price">999 <small>ر.س</small></div><ul><li>عدة أقسام وصفحات</li><li>منيو / خدمات</li><li>صور + واتساب + خرائط</li></ul><a href="#contact" class="btn">اطلبها</a></div>
-        <div class="price-card"><h3>Business</h3><div class="price">1,499 <small>ر.س</small></div><ul><li>موقع متكامل</li><li>منيو ومعرض صور</li><li>إضافات وتخصيصات</li></ul><a href="#contact" class="btn btn-outline">اطلبها</a></div>
+    <section class="section section-dark">
+      <div class="container problem-solution">
+        <div><div class="eyebrow">PROBLEM → SOLUTION</div><h2>نشاطك موجود... لكن هل يظهر بالشكل الذي يستحقه؟</h2></div>
+        <p>كثير من الأنشطة تعتمد فقط على Instagram أو WhatsApp، بينما يحتاج العميل مكانًا واضحًا يعرف منه الخدمات، المنيو، الموقع، أوقات العمل وطرق التواصل. أبني لك هذا المكان.</p>
+        <div class="solution-grid">
+          <span>📋 معلومات النشاط</span><span>📖 المنيو والخدمات</span>
+          <span>🖼️ الصور</span><span>📍 الموقع على الخريطة</span>
+          <span>💬 واتساب</span><span>🔗 روابط التواصل</span>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- تواصل -->
-  <section id="contact" class="section contact-section">
-    <div class="container contact-box">
-      <div><div class="eyebrow">LET'S BUILD</div><h2>جاهز تعرض نشاطك بشكل أفضل؟</h2><p>أرسل اسم النشاط ونوعه وما الذي تريده في الموقع، وسأحوّل الفكرة إلى نموذج واضح قبل التنفيذ.</p></div>
-      <a class="btn" href="https://wa.me/966576124840?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D9%85%D9%88%D9%82%D8%B9%D9%8B%D8%A7%20%D9%84%D9%86%D8%B4%D8%A7%D8%B7%D9%8A">تواصل عبر واتساب</a>
-    </div>
-  </section>
-</main>
+    <section id="work" class="section">
+      <div class="container">
+        <div class="section-head"><div><div class="eyebrow">DEMO PROJECTS</div><h2>نماذج من المواقع التي نستطيع تنفيذها</h2></div><p>شاهد بنفسك أسلوب العمل وجودة التصميم.</p></div>
+        <div class="demo-grid">
+          <a class="demo" href="demos/cafe.html">
+            <div class="demo-preview" style="background:linear-gradient(135deg,#2d1f14,#5a3f2b); color:#fff; padding:1rem; border-radius:12px; text-align:center; margin-bottom:1rem;">
+              <span style="font-size:2.5rem;">☕</span>
+              <p style="font-size:0.8rem; opacity:0.8;">مقهى مختص</p>
+            </div>
+            <div class="demo-tag">COFFEE</div>
+            <h3>نموذج كوفي</h3>
+            <p>واجهة أنيقة + منيو + موقع + واتساب</p>
+            <span>شاهد الموقع ←</span>
+          </a>
+          <a class="demo" href="demos/bakery.html">
+            <div class="demo-preview" style="background:linear-gradient(135deg,#f3d7b5,#eac8a2); color:#3a2c1e; padding:1rem; border-radius:12px; text-align:center; margin-bottom:1rem;">
+              <span style="font-size:2.5rem;">🥐</span>
+              <p style="font-size:0.8rem; opacity:0.8;">مخبز وفطائر</p>
+            </div>
+            <div class="demo-tag">BREAKFAST</div>
+            <h3>نموذج فطائر وفطور</h3>
+            <p>منتجات صباحية + طلب سريع + معلومات الفرع</p>
+            <span>شاهد الموقع ←</span>
+          </a>
+          <a class="demo" href="demos/restaurant.html">
+            <div class="demo-preview" style="background:radial-gradient(circle at 20% 30%, #2a2a2a, #0d0d0d); color:#fff; padding:1rem; border-radius:12px; text-align:center; margin-bottom:1rem;">
+              <span style="font-size:2.5rem;">🍽️</span>
+              <p style="font-size:0.8rem; opacity:0.8;">مطعم راقٍ</p>
+            </div>
+            <div class="demo-tag">RESTAURANT</div>
+            <h3>نموذج مطعم</h3>
+            <p>قائمة طعام + معرض صور + بيانات التواصل</p>
+            <span>شاهد الموقع ←</span>
+          </a>
+        </div>
+      </div>
+    </section>
 
-<footer><div class="container footer"><span>© 2026 PROGRAMMER SAMMER</span><span>Web Development • Riyadh</span></div></footer>
+    <section class="section section-dark" style="text-align:center;">
+      <div class="container">
+        <div class="eyebrow">YOUR TURN</div>
+        <h2 style="font-size:2.5rem;">هل تريد أن ترى موقع نشاطك قبل أن تقرر؟</h2>
+        <p style="color:var(--muted); max-width:600px; margin:1rem auto;">أرسل اسم نشاطك ونوعه، وسنتحدث معك عن الشكل المناسب للموقع.</p>
+        <a class="btn" href="#contact" style="margin-top:1.5rem;">احصل على نموذج لنشاطك</a>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head"><div><div class="eyebrow">VALUE</div><h2>ماذا سيحصل عليه نشاطك؟</h2></div><p>كل ما يحتاجه العميل ليتواصل معك بثقة.</p></div>
+        <div class="value-grid">
+          <div class="value-item">📱 <h4>تصميم للجوال</h4><p>لأن أغلب العملاء سيزورون الموقع من الهاتف.</p></div>
+          <div class="value-item">📍 <h4>Google Maps</h4><p>ليصل العميل إلى موقعك بسهولة.</p></div>
+          <div class="value-item">💬 <h4>WhatsApp</h4><p>للتواصل المباشر والفوري.</p></div>
+          <div class="value-item">📋 <h4>منيو وخدمات</h4><p>عرض واضح لما تقدمه.</p></div>
+          <div class="value-item">🖼️ <h4>معرض صور</h4><p>إظهار منتجاتك ومكانك.</p></div>
+          <div class="value-item">🔗 <h4>روابط التواصل</h4><p>Instagram وغيرها من المنصات.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== من أنا + الوثيقة (مع قائمة منسدلة) ===== -->
+    <section id="about" class="section section-dark">
+      <div class="container about-grid">
+        <div class="about-photo"><img src="PRORAMMER SAMMER.jpg" alt="PROGRAMMER SAMMER"></div>
+        <div>
+          <div class="eyebrow">ABOUT SAMMER</div>
+          <h2>لماذا PROGRAMMER SAMMER؟</h2>
+          <p class="about-text">أنا سامر عبدالعزيز، مطور مواقع إلكترونية، أركز على بناء مواقع تعريفية للمشاريع والمنشآت المحلية. هدفي ليس إنشاء موقع فقط، بل بناء واجهة واضحة تساعد العميل على معرفة نشاطك والوصول إليه والتواصل معك بسهولة.</p>
+          
+          <div class="credential-badge">
+            <img src="image.png" alt="وثيقة العمل الحر" loading="lazy">
+            <div>
+              <b>✅ وثيقة العمل الحر</b>
+              <span>متخصص في برمجة وتطوير المواقع الإلكترونية</span>
+              <!-- زر عرض الوثيقة مع قائمة منسدلة -->
+              <div class="dropdown-wrapper">
+                <button class="dropdown-btn" id="credentialToggle">عرض الوثيقة ←</button>
+                <div class="dropdown-content" id="credentialDropdown">
+                  <img src="image.png" alt="وثيقة العمل الحر - PROGRAMMER SAMMER" style="width:100%; max-width:400px; border-radius:12px; border:2px solid var(--cyan);">
+                  <p style="color:var(--muted); font-size:0.8rem; margin-top:0.5rem;">وثيقة ممارس حر معتمدة – رمز التوثيق: FL-290987510</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head"><div><div class="eyebrow">HOW WE WORK</div><h2>أربع خطوات لموقعك</h2></div><p>عملية واضحة وسلسة من البداية حتى التسليم.</p></div>
+        <div class="steps">
+          <div class="step"><span>01</span><h4>تواصل</h4><p>ترسل لي معلومات نشاطك واحتياجاتك.</p></div>
+          <div class="step"><span>02</span><h4>التخطيط</h4><p>نحدد الصفحات والمحتوى المناسب.</p></div>
+          <div class="step"><span>03</span><h4>التطوير</h4><p>أبني الموقع وأجعله مناسبًا للجوال.</p></div>
+          <div class="step"><span>04</span><h4>التسليم</h4><p>تراجع الموقع وننفذ التعديلات المتفق عليها.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="pricing" class="section section-dark">
+      <div class="container">
+        <div class="section-head"><div><div class="eyebrow">PRICING</div><h2>باقات مبدئية</h2></div><p>ابتداءً من هذه الأسعار، حسب احتياجات نشاطك.</p></div>
+        <div class="price-grid">
+          <div class="price-card"><h3>بداية</h3><div class="price">799 <small>ر.س</small></div><ul><li><strong>حضور رقمي بسيط لنشاطك</strong></li><li>صفحة تعريفية</li><li>معلومات النشاط</li><li>واتساب + خرائط</li></ul><a href="#contact" class="btn btn-outline">احصل على نموذج</a></div>
+          <div class="price-card featured"><div class="badge">الأكثر طلبًا</div><h3>احترافية</h3><div class="price">1,299 <small>ر.س</small></div><ul><li><strong>موقع متكامل لعرض نشاطك وتحويل الزائر إلى عميل</strong></li><li>صفحات متعددة</li><li>منيو / خدمات</li><li>معرض صور</li><li>واتساب + خرائط</li></ul><a href="#contact" class="btn">احصل على نموذج</a></div>
+          <div class="price-card"><h3>متقدمة</h3><div class="price">1,999 <small>ر.س</small></div><ul><li><strong>موقع مخصص للمشاريع التي تحتاج تجربة وخصائص إضافية</strong></li><li>تخصيص كامل</li><li>إضافات حسب الطلب</li></ul><a href="#contact" class="btn btn-outline">احصل على نموذج</a></div>
+        </div>
+        <p style="text-align:center; color:var(--muted); margin-top:2rem;">* السعر النهائي يحدد حسب احتياجات النشاط ومحتوى الموقع.<br><small>الاستضافة والدومين والخدمات الإضافية تُحدد حسب المشروع.</small></p>
+      </div>
+    </section>
+
+    <section class="section" style="text-align:center;">
+      <div class="container">
+        <div class="eyebrow">MAINTENANCE</div>
+        <h2>بعد إطلاق موقعك</h2>
+        <p style="color:var(--muted); max-width:600px; margin:1rem auto;">أساعدك أيضًا في الحفاظ على الموقع محدثًا حسب الاتفاق: تحديث المنيو، إضافة صور، تعديل معلومات، وتحديثات بسيطة.</p>
+      </div>
+    </section>
+
+    <section class="section section-dark">
+      <div class="container">
+        <div class="section-head"><div><div class="eyebrow">FAQ</div><h2>الأسئلة الشائعة</h2></div></div>
+        <div class="faq-grid">
+          <div><h4>هل الموقع يعمل على الجوال؟</h4><p>نعم، أصمم الموقع ليكون متجاوبًا مع الجوال والأجهزة المختلفة.</p></div>
+          <div><h4>هل يمكن إضافة WhatsApp؟</h4><p>نعم، أوفر زر واتساب مباشر للتواصل السريع.</p></div>
+          <div><h4>هل يمكن إضافة خرائط Google؟</h4><p>نعم، أضيف موقعك على الخريطة ليسهل الوصول إليك.</p></div>
+          <div><h4>هل يمكن تحديث المنيو لاحقًا؟</h4><p>نعم، حسب نوع الموقع والاتفاق المبرم.</p></div>
+          <div><h4>هل السعر يشمل الاستضافة والدومين؟</h4><p>يختلف حسب الباقة، يمكننا ترتيب ذلك بشكل منفصل.</p></div>
+          <div><h4>كم يستغرق تنفيذ الموقع؟</h4><p>تختلف المدة حسب حجم المشروع ومتطلباته.</p></div>
+          <div><h4>هل هذا متجر إلكتروني؟</h4><p>الخدمة الحالية مخصصة للمواقع التعريفية، ويمكن مناقشة المتاجر والأنظمة الخاصة حسب متطلبات المشروع.</p></div>
+          <div><h4>هل تقدم خدمة تحديث المحتوى بعد التسليم؟</h4><p>نعم، أوفر خدمة تحديث المحتوى حسب الاتفاق المبرم.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <div class="container contact-box">
+        <div><div class="eyebrow">START NOW</div><h2>نشاطك يستحق أن يظهر بشكل احترافي</h2><p>دعنا نبني لك موقعًا يعرّف عملاءك بنشاطك ويوصلهم إليك بسهولة.</p></div>
+        <a class="btn" href="https://wa.me/966576124840?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D9%85%D8%B9%D8%B1%D9%81%D8%A9%20%D8%AA%D9%81%D8%A7%D8%B5%D9%8A%D9%84%20%D8%AA%D8%B5%D9%85%D9%8A%D9%85%20%D9%85%D9%88%D9%82%D8%B9%20%D9%84%D9%86%D8%B4%D8%A7%D8%B7%D9%8A." target="_blank" rel="noopener noreferrer">ابدأ محادثتك عبر واتساب</a>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="container footer"><span>© 2026 PROGRAMMER SAMMER</span><span>Web Development • Riyadh</span></div></footer>
+
+  <a href="https://wa.me/966576124840?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D9%85%D8%B9%D8%B1%D9%81%D8%A9%20%D8%AA%D9%81%D8%A7%D8%B5%D9%8A%D9%84%20%D8%AA%D8%B5%D9%85%D9%8A%D9%85%20%D9%85%D9%88%D9%82%D8%B9%20%D9%84%D9%86%D8%B4%D8%A7%D8%B7%D9%8A." class="whatsapp-float" target="_blank" rel="noopener noreferrer">💬</a>
+
+  <script src="script.js"></script>
 </body>
 </html>

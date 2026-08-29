@@ -1,10 +1,167 @@
-<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>DEMO BREAKFAST | PROGRAMMER SAMMER</title><style>body{margin:0;background:#fffaf4;color:#2e2118;font-family:Arial,sans-serif}header{padding:18px 6%;display:flex;justify-content:space-between;border-bottom:1px solid #eadfce}header a{color:#7c6655;text-decoration:none}.hero{padding:85px 8%;background:linear-gradient(130deg,#fff0dc,#f3cda2)}.tag{color:#9f5e2e;font-size:12px;letter-spacing:2px}.hero h1{font-size:68px;line-height:1.05;margin:12px 0}.hero p{max-width:600px;font-size:18px;color:#6c5646}.btn{display:inline-block;padding:13px 20px;border-radius:10px;background:#2e2118;color:#fff;text-decoration:none}.grid{padding:60px 8%;display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.card{background:#fff;border:1px solid #eadfce;border-radius:18px;padding:22px}.price{color:#a15c2b}@media(max-width:800px){.grid{grid-template-columns:1fr}.hero h1{font-size:48px}}</style></head><body><header><strong>فطور الصباح</strong><a href="../index.html">PROGRAMMER SAMMER</a></header><section class="hero"><div class="tag">BREAKFAST • PASTRIES • RIYADH</div><h1>ابدأ يومك<br>بشيء لذيذ.</h1><p>نموذج تجريبي لمحل فطائر وفطور مع عرض المنتجات وطلب سريع ومعلومات الفرع.</p><a class="btn" href="#items">تصفح المنتجات</a></section><section id="items" class="grid"><div class="card"><h3>فطيرة جبن</h3><p>عجينة مخبوزة يوميًا وحشوة كريمية.</p><b class="price">12 ر.س</b></div><div class="card"><h3>شكشوكة</h3><p>فطور صباحي بطابع البيت.</p><b class="price">18 ر.س</b></div><div class="card"><h3>ميني بان كيك</h3><p>مع عسل وتوت.</p><b class="price">16 ر.س</b></div></section>
-<!-- قسم التواصل الجديد -->
-<div style="text-align:center; padding:40px 8%; border-top:1px solid #d4c5b2; margin-top:40px;">
-  <p style="color:#7c6655; font-size:14px;">📌 هذا نموذج تجريبي (Demo) لأغراض العرض</p>
-  <a href="https://wa.me/966576124840?text=السلام%20عليكم،%20شاهدت%20النموذج%20التجريبي%20للفطور%20وأرغب%20في%20استفسار" 
-     style="display:inline-block; padding:12px 28px; background:#2e2118; color:#fff; border-radius:30px; text-decoration:none; font-weight:bold;">
-     📱 تواصل مع المطور لطلب موقعك
-  </a>
-</div>
-</body></html>
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>🥐 فطور الصباح | مخبز وفطائر</title>
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family: 'Segoe UI', Tahoma, sans-serif; background: #fdf6ed; color: #3a2c1e; line-height:1.7; }
+    .container { width: min(1100px, 92%); margin:0 auto; }
+    a { text-decoration: none; color: inherit; }
+
+    header { background: #f3e1c2; color: #3a2c1e; padding: 1rem 0; border-bottom: 3px solid #dbb48a; position:sticky; top:0; z-index:100; }
+    .nav { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; position:relative; }
+    .brand { font-weight:800; font-size:1.4rem; }
+    .nav-links { display:flex; gap:1rem; flex-wrap:wrap; }
+    .nav-links a { transition:0.3s; font-weight:500; }
+    .nav-links a:hover { color:#8b6b4a; }
+    .nav-toggle-label { display:none; flex-direction:column; gap:4px; cursor:pointer; padding:5px; }
+    .nav-toggle-label span { width:28px; height:3px; background:#3a2c1e; border-radius:4px; }
+    #nav-toggle:checked ~ .nav-links { display:flex; flex-direction:column; position:absolute; top:100%; right:0; background:#f3e1c2; width:100%; padding:1rem; gap:0.8rem; border-top:2px solid #dbb48a; }
+
+    .hero { background: linear-gradient(135deg, #f3d7b5, #eac8a2); padding: 4rem 0; text-align: center; }
+    .hero h1 { font-size: clamp(2.5rem, 6vw, 3.5rem); }
+    .hero p { max-width:600px; margin:0 auto 1.5rem; font-size:1.2rem; }
+    .btn { background:#3a2c1e; color:#fdf6ed; padding:0.8rem 2rem; border-radius:40px; font-weight:700; display:inline-block; transition:0.3s; }
+    .btn:hover { background:#5a4532; }
+
+    .menu { padding: 3rem 0; }
+    .menu h2 { text-align:center; font-size:2.5rem; margin-bottom:2rem; color:#3a2c1e; }
+    .menu-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(180px,1fr)); gap:1.5rem; }
+    .menu-item { background:#fff; padding:1.5rem; border-radius:16px; border:1px solid #e8ddd2; text-align:center; }
+    .menu-item .price { font-weight:800; color:#a67c4e; }
+
+    .about-place { background: #f0e4d4; padding: 3rem 0; text-align:center; }
+    .about-place h2 { font-size:2.2rem; margin-bottom:1rem; }
+
+    .gallery { padding:3rem 0; background:#fff; }
+    .gallery h2 { text-align:center; font-size:2.2rem; margin-bottom:1.5rem; color:#3a2c1e; }
+    .gallery-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; }
+    .gallery-grid img { width:100%; height:180px; object-fit:cover; border-radius:12px; border:1px solid #e8ddd2; }
+
+    .hours { padding:3rem 0; background:#f0e4d4; text-align:center; }
+    .hours h2 { font-size:2.2rem; margin-bottom:1.5rem; color:#3a2c1e; }
+    .hours-box { display:inline-block; background:#fff; padding:1.5rem 2.5rem; border-radius:16px; text-align:right; }
+
+    .location { padding:3rem 0; text-align:center; }
+    .location .map-link { display:inline-block; background:#3a2c1e; color:#fdf6ed; padding:0.8rem 2rem; border-radius:40px; margin-top:0.5rem; font-weight:700; transition:0.3s; }
+    .location .map-link:hover { background:#5a4532; }
+
+    .contact-demo { background:#3a2c1e; color:#fdf6ed; padding:2rem 0; text-align:center; }
+    .contact-demo .btn-wa { background:#25D366; color:#fff; padding:0.8rem 2rem; border-radius:40px; font-weight:700; display:inline-block; margin-top:0.5rem; transition:0.3s; }
+    .contact-demo .btn-wa:hover { background:#1ebe5c; }
+
+    footer { background:#2c1f14; color:#b8a694; padding:1.5rem 0; text-align:center; }
+    footer .demo-note { background:#dbb48a; color:#1f140d; padding:0.3rem 1rem; border-radius:20px; display:inline-block; margin-bottom:0.5rem; font-weight:600; }
+
+    @media (max-width: 700px) {
+      .nav-toggle-label { display:flex; }
+      .nav-links { display:none; }
+      #nav-toggle:checked ~ .nav-links { display:flex; }
+      .gallery-grid { grid-template-columns:1fr 1fr; }
+    }
+    @media (max-width: 500px) {
+      .gallery-grid { grid-template-columns:1fr; }
+      .hero h1 { font-size:2rem; }
+      .hours-box { padding:1rem; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <span class="brand">🥐 فطور الصباح</span>
+      <input type="checkbox" id="nav-toggle" hidden>
+      <label for="nav-toggle" class="nav-toggle-label"><span></span><span></span><span></span></label>
+      <div class="nav-links">
+        <a href="#">الرئيسية</a>
+        <a href="#menu">المنتجات</a>
+        <a href="#about">عن المخبز</a>
+        <a href="#gallery">المعرض</a>
+        <a href="#hours">ساعات العمل</a>
+        <a href="#location">الموقع</a>
+        <a href="#contact">تواصل</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <h1>ابدأ يومك بشيء لذيذ</h1>
+      <p>فطائر ومعجنات طازجة يوميًا، مع قهوة وشاي. نقدم لك وجبة فطور مثالية.</p>
+      <a href="#menu" class="btn">تصفح المنتجات</a>
+    </div>
+  </section>
+
+  <section id="menu" class="menu">
+    <div class="container">
+      <h2>🍞 أصنافنا</h2>
+      <div class="menu-grid">
+        <div class="menu-item"><h3>فطيرة جبن</h3><p>عجينة هشة وحشوة كريمية.</p><span class="price">12 ر.س</span></div>
+        <div class="menu-item"><h3>شكشوكة</h3><p>بيض مع صلصة الطماطم والفلفل.</p><span class="price">18 ر.س</span></div>
+        <div class="menu-item"><h3>ميني بان كيك</h3><p>مع عسل وتوت طازج.</p><span class="price">16 ر.س</span></div>
+        <div class="menu-item"><h3>معجنات مشكل</h3><p>حشوات متعددة.</p><span class="price">14 ر.س</span></div>
+        <div class="menu-item"><h3>قهوة عربية</h3><p>مع هيل وتمر.</p><span class="price">10 ر.س</span></div>
+        <div class="menu-item"><h3>شاي بالحليب</h3><p>شاي عدني.</p><span class="price">8 ر.س</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="about-place">
+    <div class="container">
+      <h2>عن فطور الصباح</h2>
+      <p>نخبز يومياً بأيدي ماهرة، نقدم لك أشهى الفطائر والمعجنات مع قهوة عربية أو شاي. مكان دافئ يليق ببداية يومك.</p>
+    </div>
+  </section>
+
+  <section id="gallery" class="gallery">
+    <div class="container">
+      <h2>📸 معرض الصور</h2>
+      <div class="gallery-grid">
+        <img src="https://picsum.photos/400/300?random=10" alt="صورة المخبز 1" loading="lazy">
+        <img src="https://picsum.photos/400/300?random=11" alt="صورة المخبز 2" loading="lazy">
+        <img src="https://picsum.photos/400/300?random=12" alt="صورة المخبز 3" loading="lazy">
+        <img src="https://picsum.photos/400/300?random=13" alt="صورة المخبز 4" loading="lazy">
+        <img src="https://picsum.photos/400/300?random=14" alt="صورة المخبز 5" loading="lazy">
+        <img src="https://picsum.photos/400/300?random=15" alt="صورة المخبز 6" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <section id="hours" class="hours">
+    <div class="container">
+      <h2>🕒 ساعات العمل</h2>
+      <div class="hours-box">
+        <p>السبت – الخميس: 5:30 ص – 10:00 م</p>
+        <p>الجمعة: 6:00 ص – 11:00 ص</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="location" class="location">
+    <div class="container">
+      <h2>📍 موقعنا</h2>
+      <p>حي النرجس، الرياض – بجانب مسجد الحي</p>
+      <a href="https://www.google.com/maps/place/الرياض" target="_blank" rel="noopener noreferrer" class="map-link">🗺️ افتح في Google Maps</a>
+    </div>
+  </section>
+
+  <section id="contact" class="contact-demo">
+    <div class="container">
+      <div style="background:rgba(255,255,255,0.1); padding:1.5rem; border-radius:16px; max-width:500px; margin:0 auto;">
+        <p style="color:#dbb48a; font-weight:600;">📌 نموذج تجريبي (Demo)</p>
+        <p>للتواصل مع المطور:</p>
+        <a href="https://wa.me/966576124840?text=السلام%20عليكم%20شاهدت%20النموذج%20التجريبي%20للفطور" target="_blank" rel="noopener noreferrer" class="btn-wa">📱 واتساب</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="demo-note">نموذج تجريبي – من أعمال PROGRAMMER SAMMER</div>
+      <p>© 2026</p>
+    </div>
+  </footer>
+</body>
+</html>
