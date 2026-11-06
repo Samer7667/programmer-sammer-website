@@ -29,3 +29,9 @@ PROGRAMMER SAMMER — GLOBAL WEBSITE VERSION
 - بلّغني معروض بأنه قيد التحقق والتطوير، وليس اشتراكًا متاحًا.
 - تبديل اللغة يدوي ولا يعتمد على موقع الزائر الجغرافي.
 - الموقع لم يتم نشره على النطاق تلقائيًا؛ يحتاج إلى رفع الملفات عبر حساب الاستضافة.
+
+
+LOGO DISPLAY UPDATE
+- The portfolio now uses sammer-full-logo.jpg, the complete original square logo supplied by the owner.
+- The logo is displayed with object-fit: contain (no cropping) and can be opened at full size by clicking it.
+- The previously cropped wide logo file is no longer used in portfolio cards.
