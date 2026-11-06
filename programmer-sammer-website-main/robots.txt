@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://programmersammer.com/sitemap.xml
