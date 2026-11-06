@@ -1,19 +1,17 @@
-PROGRAMMER SAMMER - Starter Website
-===================================
+PROGRAMMER SAMMER – Typography Refinement
 
-الملفات:
-- index.html       الموقع الشخصي/صفحة الخدمات الرئيسية (تم إضافة قسم الاعتمادات)
-- styles.css       التنسيق
-- script.js        التفاعل البسيط
-- logo.jpg         الشعار المرفوع من المستخدم
-- certificate.pdf  (ضع ملف وثيقة العمل الحر هنا)
-- البطاقة التعريفية.pdf (ضع ملف البطاقة هنا)
-- demos/cafe.html  نموذج كوفي (تم إضافة زر تواصل)
-- demos/bakery.html نموذج فطائر وفطور (تم إضافة زر تواصل)
-- demos/restaurant.html نموذج مطعم (تم إضافة زر تواصل)
+This update improves readability across the website while preserving the light blue visual identity and the full original logo display.
 
-ملاحظة:
-تم تحديث رقم واتساب إلى: +966 57 612 4840
-تم إضافة عرض للتراخيص في الصفحة الرئيسية لتعزيز المصداقية.
+Main changes:
+- Increased small captions, project labels, project descriptions, FAQ text, form labels and footer text.
+- Improved card metadata legibility, especially the developer/project identity row.
+- Increased body copy sizes while retaining larger headings and existing layout hierarchy.
+- Added separate tablet/mobile font-size refinements to avoid cramped layouts.
+- No changes to domain, forms, external accounts, or paid services.
 
-الموقع ثابت (HTML/CSS/JS) ويمكن رفعه إلى Netlify أو Vercel أو استضافة عادية.
+Deployment:
+1. Back up the current website files.
+2. Upload the contents of this folder to the website root, preserving the CNAME file.
+3. Test the homepage and project cards on desktop and mobile.
+
+Note: This package contains static website files. It has not been deployed to the live domain.

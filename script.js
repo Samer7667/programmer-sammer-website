@@ -1,62 +1,79 @@
-document.addEventListener('DOMContentLoaded', () => {
-  // ===== تمرير سلس للروابط الداخلية =====
-  document.querySelectorAll('a[href^="#"]').forEach(link => {
-    link.addEventListener('click', e => {
-      const target = document.querySelector(link.getAttribute('href'));
-      if (target) {
-        e.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        const toggle = document.getElementById('nav-toggle');
-        if (toggle && toggle.checked) {
-          toggle.checked = false;
-        }
-      }
-    });
-  });
-
-  // ===== تأثير ظهور البطاقات عند التمرير =====
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.style.opacity = '1';
-        entry.target.style.transform = 'translateY(0)';
-      }
-    });
-  }, { threshold: 0.15 });
-
-  document.querySelectorAll('.service, .demo, .value-item, .step, .price-card').forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(30px)';
-    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-    observer.observe(el);
-  });
-
-  // ===== النافذة المنبثقة لعرض وثيقة العمل الحر =====
-  const toggleBtn = document.getElementById('credentialToggle');
-  const overlay = document.getElementById('credentialOverlay');
-
-  if (toggleBtn && overlay) {
-    // فتح النافذة
-    toggleBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      overlay.classList.add('active');
-      document.body.style.overflow = 'hidden';
-    });
-
-    // إغلاق النافذة عند النقر على الخلفية
-    overlay.addEventListener('click', (e) => {
-      if (e.target === overlay) {
-        overlay.classList.remove('active');
-        document.body.style.overflow = '';
-      }
-    });
-
-    // إغلاق النافذة عند الضغط على Escape
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && overlay.classList.contains('active')) {
-        overlay.classList.remove('active');
-        document.body.style.overflow = '';
-      }
-    });
+const copy = {
+  ar: {
+    skip:'تجاوز إلى المحتوى',nav_solutions:'الحلول',nav_products:'المنتجات',nav_work:'الأعمال',nav_about:'من أنا',nav_contact:'ناقش مشروعك <span>↗</span>',
+    hero_eyebrow:'<span class="pulse-dot"></span> حلول رقمية تبدأ من فهم المشكلة',hero_title:'نحوّل المشكلات<br><span>إلى حلول رقمية.</span>',hero_lead:'أطوّر منتجات تقنية وأنظمة مخصصة ومواقع إلكترونية تساعد أصحاب الأعمال والفرق على تبسيط العمل ومعالجة التحديات اليومية.',hero_cta:'ناقش مشروعك <span>↗</span>',hero_work:'استكشف الأعمال',hero_point1:'<i>✓</i> فهم الاحتياج أولًا',hero_point2:'<i>✓</i> نطاق وتسليمات واضحة',hero_point3:'<i>✓</i> تعاون عن بُعد',visual_label:'من المشكلة إلى الحل',step_problem:'نفهم المشكلة',step_problem_sub:'ما الذي يستهلك الوقت أو يعرقل العمل؟',step_plan:'نحدد الحل',step_plan_sub:'نختار أبسط طريقة تحقق الهدف.',step_build:'نبني ونختبر',step_build_sub:'نطوّر نسخة قابلة للاستخدام والتحسين.',visual_foot:'منتجات رقمية وحلول برمجية',
+    value1:'هدف واضح قبل التطوير',value2:'تجربة مناسبة للجوال',value3:'تواصل مباشر وواضح',value4:'مشاريع تُدار عن بُعد',
+    solutions_title:'ثلاثة مسارات،<br><em>وهدف واحد: حل مفيد.</em>',solutions_intro:'لا أبدأ بالتقنية ثم أبحث لها عن استخدام. أبدأ بالمشكلة، وبعد فهمها أحدد ما إذا كان الأنسب منتجًا جاهزًا أو نظامًا مخصصًا أو موقعًا يخدم الهدف.',service1_title:'منتجات رقمية',service1_text:'حلول تقنية متخصصة تُبنى لمعالجة مشكلة واضحة، ويمكن تقديمها لأكثر من منشأة وفق نموذج استخدام مناسب.',service1_link:'تعرّف على المنتجات <span>↗</span>',service2_title:'أنظمة مخصصة',service2_text:'تحليل إجراءات العمل وتصميم نظام يتوافق مع احتياج المنشأة، ومستخدميها، وصلاحياتها.',service2_link:'ناقش احتياجك <span>↗</span>',service3_title:'مواقع وتجارب ويب',service3_text:'مواقع تعريفية وبوابات رقمية واضحة وسريعة، توصل قيمة النشاط وتسهّل على الزائر اتخاذ الخطوة المناسبة.',service3_link:'شاهد النماذج <span>↗</span>',
+    product_state:'قيد التحقق والتطوير',product_title:'بلّغني <em>BALGHNI</em>',product_text:'تصور منتج رقمي يساعد المنشآت على تنظيم بلاغات المركبات التي تعيق المواقف، وإيصال التنبيه لصاحب المركبة دون إظهار بيانات الاتصال الخاصة به.',product_point1:'تسجيل المركبات وربطها بأصحابها',product_point2:'استقبال البلاغات عبر اللوحة أو رمز QR',product_point3:'لوحة متابعة لمسؤولي المنشأة',product_link:'زيارة موقع المنتج <span>↗</span>',product_note:'المنتج قيد التحقق والتطوير، ولا يعني عرض الفكرة أن الخدمة متاحة للاشتراك أو التشغيل حاليًا.',mock_report:'بلاغ جديد',mock_branch:'لوحة متابعة تجريبية',mock_demo:'تصور',mock_plate:'رقم لوحة المركبة',mock_found:'تم العثور على المركبة',mock_notify:'إشعار صاحب المركبة',mock_privacy:'تنبيه دون إظهار رقم الجوال',mock_stat1:'بلاغات اليوم',mock_stat2:'تمت معالجتها',mock_stat3:'قيد المتابعة',mock_float_title:'تواصل منظم',mock_float_sub:'تصور توضيحي وليس واجهة تشغيلية',
+    work_title:'نماذج وتجارب،<br><em>توضح طريقة العمل.</em>',work_intro:'كل نموذج يعرض فكرة وهوية مستقلة، وبجانبها شعار Programmer Sammer بوصفه هوية المطوّر. النماذج الحالية تجريبية وليست أعمالًا منسوبة إلى عملاء.',project_identity:'هوية النموذج',developer_identity:'التطوير بواسطة',cafe_brand:'مقهى مختص',bakery_brand:'مخبز وفطور',restaurant_brand:'مطعم معاصر',demo_hospitality:'نموذج تجريبي · الضيافة',demo_food:'نموذج تجريبي · الأغذية',demo_restaurant:'نموذج تجريبي · المطاعم',cafe_title:'موقع مقهى',bakery_title:'موقع مخبز',restaurant_title:'موقع مطعم',cafe_desc:'عرض القائمة والهوية والمعلومات وطرق التواصل في تجربة متوافقة مع الجوال.',bakery_desc:'عرض المنتجات والخدمات والمعلومات الأساسية بطريقة منظمة.',restaurant_desc:'واجهة تبرز القائمة والهوية وتجربة الزائر.',cafe_mock_title:'قهوة على<br>طريقتك.',bakery_mock_title:'بداية يوم<br>أطيب.',restaurant_mock_title:'نكهة تجمعنا.',preview_menu:'اكتشف القائمة',preview_products:'شاهد المنتجات',preview_explore:'استكشف القائمة',work_note:'هذه نماذج تصميمية داخلية لعرض المهارات، وليست مشاريع عملاء. عند إضافة أعمال منفذة لعميل، لن تُعرض هويته أو تفاصيله إلا بإذنه.',
+    process_title:'طريقة عمل واضحة،<br><em>من أول نقاش إلى التسليم.</em>',process_intro:'أحدد معك المشكلة والنتيجة المطلوبة قبل اختيار التقنية، ثم نتفق على نطاق العمل والتسليمات والتكلفة.',process1_title:'أفهم',process1_text:'أستمع لاحتياجك وأراجع طريقة العمل الحالية.',process2_title:'أحدد',process2_text:'أضع نطاقًا واضحًا وأقترح الحل المناسب.',process3_title:'أطوّر',process3_text:'أبني الحل وأختبره وفق المتطلبات المتفق عليها.',process4_title:'أسلّم وأحسّن',process4_text:'أوضح طريقة الاستخدام وأتابع التحسين وفق الاتفاق.',commitment:'قبل بدء أي مشروع، تتضح المتطلبات والتكلفة وحقوق الاستخدام وما يشمله التسليم.',
+    about_title:'هوية واحدة،<br><em>ومساحة لبناء منتجات متعددة.</em>',about_text:'Programmer Sammer هي هويتي المهنية كمطور ومهتم ببناء المنتجات الرقمية. أعمل على فهم المشكلات العملية، وتطوير مواقع وأنظمة تساعد أصحاب الأعمال والفرق على إنجاز أعمالهم بصورة أوضح وأسهل.',remote_note:'أستقبل طلبات المشاريع من مختلف الأماكن، ويكون التواصل والتنفيذ عن بُعد وفق طبيعة كل مشروع.',
+    faq_title:'أسئلة شائعة،<br><em>قبل أن نبدأ.</em>',faq_intro:'إجابات مباشرة تساعدك على معرفة طريقة العمل وما يمكن توقعه.',faq1_q:'هل أقدم منتجات جاهزة أم تطويرًا حسب الطلب؟',faq1_a:'المساران متاحان: منتجات رقمية متخصصة، وأنظمة تُطوّر وفق احتياج المنشأة ونطاق عمل متفق عليه.',faq2_q:'هل بلّغني متاح للاشتراك حاليًا؟',faq2_a:'بلّغني معروض كمنتج قيد التحقق والتطوير. لن أعلن إتاحة الاشتراك أو التشغيل التجاري قبل اكتمال الاختبارات والترتيبات اللازمة.',faq3_q:'هل يمكن العمل عن بُعد؟',faq3_a:'نعم. يمكن مناقشة المتطلبات ومراجعة النماذج وتسليم المخرجات إلكترونيًا، وفق طبيعة المشروع.',faq4_q:'هل تنفذ مواقع إلكترونية؟',faq4_a:'نعم، تشمل الخدمات مواقع تعريفية وصفحات أعمال وبوابات إلكترونية حسب الحاجة.',faq5_q:'كيف أحصل على عرض سعر؟',faq5_a:'أرسل نبذة عن نشاطك واحتياجك، وبعد مراجعة المتطلبات أجهز نطاق عمل وتكلفة مبدئية.',faq6_q:'هل يوجد عقد ونطاق عمل؟',faq6_a:'يتم توضيح المطلوب والمخرجات والتعديلات والمدة والتكلفة وحقوق الاستخدام قبل البدء، بما يناسب طبيعة المشروع.',
+    contact_title:'لديك فكرة أو مشكلة؟<br><em>ابدأ من هنا.</em>',contact_text:'أخبرني بما تريد تحسينه أو بناؤه. لا تحتاج إلى معرفة الحل التقني مسبقًا؛ اشرح احتياجك وسأساعدك في تحديد الخطوة المناسبة.',contact_reassurance:'مناقشة أولية واضحة، ثم نطاق عمل قبل أي التزام بالتنفيذ.',contact_remote:'التواصل والعمل عن بُعد مع العملاء من مختلف المواقع.',form_name:'الاسم أو اسم المنشأة',form_name_hint:'مثال: سامر / شركة النور',form_contact:'رقم الجوال أو البريد الإلكتروني',form_contact_hint:'وسيلة التواصل المناسبة',form_need:'ما الذي تحتاجه؟',form_choose:'اختر نوع الاحتياج',form_opt1:'حل مشكلة تشغيلية',form_opt2:'نظام مخصص',form_opt3:'موقع أو بوابة إلكترونية',form_opt4:'الاستفسار عن بلّغني',form_opt5:'طلب آخر',form_details:'تفاصيل مختصرة',form_details_hint:'اشرح المشكلة أو الفكرة باختصار...',form_submit:'إرسال الطلب عبر واتساب <span>↗</span>',form_hint:'ستُفتح رسالة جاهزة في واتساب لمراجعتها قبل إرسالها.',footer_tagline:'منتجات رقمية وحلول برمجية للأعمال.',footer_contact:'ابدأ مناقشة مشروعك <span>↗</span>',footer_remote:'تعاون عن بُعد · نستقبل استفسارات من مختلف الدول',footer_top:'العودة للأعلى ↑'
+  },
+  en: {
+    skip:'Skip to content',nav_solutions:'Solutions',nav_products:'Products',nav_work:'Work',nav_about:'About',nav_contact:'Discuss a project <span>↗</span>',
+    hero_eyebrow:'<span class="pulse-dot"></span> Digital solutions begin with understanding the problem',hero_title:'Turning problems<br><span>into digital solutions.</span>',hero_lead:'I build digital products, custom software systems and websites that help businesses and teams simplify work and address everyday challenges.',hero_cta:'Discuss a project <span>↗</span>',hero_work:'Explore selected work',hero_point1:'<i>✓</i> Understand the need first',hero_point2:'<i>✓</i> Clear scope and deliverables',hero_point3:'<i>✓</i> Remote collaboration',visual_label:'From problem to solution',step_problem:'Understand the problem',step_problem_sub:'What slows the work down or creates friction?',step_plan:'Define the solution',step_plan_sub:'Choose the simplest approach that meets the goal.',step_build:'Build and test',step_build_sub:'Develop a usable version and improve it.',visual_foot:'Digital products & software solutions',
+    value1:'A clear goal before development',value2:'Designed for mobile',value3:'Direct, clear communication',value4:'Projects managed remotely',
+    solutions_title:'Three ways to build,<br><em>one goal: useful outcomes.</em>',solutions_intro:'I do not start with technology and search for a use later. I start with the problem, then decide whether a ready-made product, a custom system or a website is the right fit.',service1_title:'Digital products',service1_text:'Focused digital solutions built around a clear problem and designed to serve more than one organization.',service1_link:'Explore products <span>↗</span>',service2_title:'Custom systems',service2_text:'Reviewing workflows and designing software around an organization’s needs, users and permissions.',service2_link:'Discuss your needs <span>↗</span>',service3_title:'Websites & experiences',service3_text:'Clear, fast websites and portals that communicate value and help visitors take the right next step.',service3_link:'View concepts <span>↗</span>',
+    product_state:'In validation and development',product_title:'Balghni <em>BALGHNI</em>',product_text:'A digital product concept that helps organizations manage reports about vehicles blocking parking spaces and notify vehicle owners without revealing their contact details.',product_point1:'Register vehicles and link them to their owners',product_point2:'Receive reports by plate number or QR code',product_point3:'A management dashboard for the organization',product_link:'Visit product website <span>↗</span>',product_note:'The product is still being validated and developed. This concept does not mean that subscriptions or live operation are currently available.',mock_report:'New report',mock_branch:'Demo management view',mock_demo:'Concept',mock_plate:'Vehicle plate number',mock_found:'Vehicle found',mock_notify:'Notify vehicle owner',mock_privacy:'Alert without exposing a phone number',mock_stat1:'Reports today',mock_stat2:'Resolved',mock_stat3:'In progress',mock_float_title:'Organized communication',mock_float_sub:'Illustrative concept, not a live interface',
+    work_title:'Concepts and experiments,<br><em>showing how I approach the work.</em>',work_intro:'Each concept has its own visual identity, shown beside the Programmer Sammer developer mark. These are demonstration concepts, not client projects.',project_identity:'Concept identity',developer_identity:'Developed by',cafe_brand:'Specialty café',bakery_brand:'Bakery & breakfast',restaurant_brand:'Contemporary restaurant',demo_hospitality:'Concept · Hospitality',demo_food:'Concept · Food',demo_restaurant:'Concept · Restaurant',cafe_title:'Café website',bakery_title:'Bakery website',restaurant_title:'Restaurant website',cafe_desc:'A mobile-friendly experience for the menu, brand story, information and contact options.',bakery_desc:'An organized presentation of products, services and essential information.',restaurant_desc:'A visual interface highlighting the menu, identity and visitor experience.',cafe_mock_title:'Coffee, made<br>your way.',bakery_mock_title:'A better<br>start to the day.',restaurant_mock_title:'Made to bring<br>people together.',preview_menu:'Explore menu',preview_products:'View products',preview_explore:'Explore menu',work_note:'These are internal design concepts that demonstrate skills, not client projects. A client’s identity or project details will only be shown with permission.',
+    process_title:'A clear process,<br><em>from the first conversation to delivery.</em>',process_intro:'We define the problem and the intended result before choosing technology, then agree on scope, deliverables and cost.',process1_title:'Understand',process1_text:'Listen to your needs and review the current workflow.',process2_title:'Define',process2_text:'Set a clear scope and recommend an appropriate solution.',process3_title:'Develop',process3_text:'Build and test against the agreed requirements.',process4_title:'Deliver & improve',process4_text:'Explain how to use the solution and improve it as agreed.',commitment:'Before work begins, requirements, cost, usage rights and deliverables are made clear.',
+    about_title:'One identity,<br><em>room to build many products.</em>',about_text:'Programmer Sammer is my professional identity as a developer focused on digital products. I work to understand practical problems and build websites and systems that help businesses and teams work more clearly and efficiently.',remote_note:'I welcome project enquiries from different locations, with communication and delivery handled remotely according to each project.',
+    faq_title:'Common questions,<br><em>before we begin.</em>',faq_intro:'Straightforward answers about the process and what to expect.',faq1_q:'Do you offer ready-made products or custom development?',faq1_a:'Both: focused digital products and systems developed around an organization’s needs and an agreed scope.',faq2_q:'Is Balghni available for subscription?',faq2_a:'Balghni is presented as a product in validation and development. Subscriptions and live operation will not be announced until testing and required arrangements are complete.',faq3_q:'Can we work remotely?',faq3_a:'Yes. Requirements, design reviews and digital delivery can all be handled remotely, depending on the project.',faq4_q:'Do you also build websites?',faq4_a:'Yes. Services include business websites, portfolio sites and digital portals based on the project needs.',faq5_q:'How do I request a quote?',faq5_a:'Share a short description of your business and needs. After reviewing the requirements, I will prepare an initial scope and estimate.',faq6_q:'Will there be a contract and defined scope?',faq6_a:'Requirements, deliverables, revisions, timeline, cost and usage rights are clarified before work starts, as appropriate for the project.',
+    contact_title:'Have an idea or a problem?<br><em>Start here.</em>',contact_text:'Tell me what you want to improve or build. You do not need to know the technical answer in advance; explain the need and I will help define a sensible next step.',contact_reassurance:'A clear initial discussion, followed by a scope before any commitment to delivery.',contact_remote:'Remote communication and project delivery for clients in different locations.',form_name:'Your name or organization',form_name_hint:'e.g. Sammer / Example Company',form_contact:'Phone number or email',form_contact_hint:'Your preferred contact method',form_need:'What do you need?',form_choose:'Choose a project type',form_opt1:'Solve an operational problem',form_opt2:'Custom software system',form_opt3:'Website or digital portal',form_opt4:'Ask about Balghni',form_opt5:'Other request',form_details:'A few details',form_details_hint:'Briefly describe the problem or idea...',form_submit:'Send enquiry via WhatsApp <span>↗</span>',form_hint:'A pre-filled WhatsApp message will open for your review before sending.',footer_tagline:'Digital products and software solutions for business.',footer_contact:'Start a project conversation <span>↗</span>',footer_remote:'Remote collaboration · Enquiries welcome worldwide',footer_top:'Back to top ↑'
   }
+};
+
+const placeholders = {
+  form_name_hint: 'form_name_hint', form_contact_hint:'form_contact_hint', form_details_hint:'form_details_hint'
+};
+function setLanguage(lang){
+  const dict=copy[lang]||copy.ar;
+  document.documentElement.lang=lang;
+  document.documentElement.dir=lang==='ar'?'rtl':'ltr';
+  document.body.classList.toggle('en',lang==='en');
+  document.querySelectorAll('[data-i18n]').forEach(el=>{const key=el.getAttribute('data-i18n');if(dict[key]!==undefined)el.innerHTML=dict[key];});
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el=>{const key=el.getAttribute('data-i18n-placeholder');if(dict[key]!==undefined)el.placeholder=dict[key];});
+  const toggle=document.getElementById('languageToggle');
+  if(toggle){toggle.textContent=lang==='ar'?'English':'العربية';toggle.setAttribute('aria-label',lang==='ar'?'Switch to English':'التبديل إلى العربية');}
+  const nav=document.getElementById('mainNav');if(nav)nav.setAttribute('aria-label',lang==='ar'?'القائمة الرئيسية':'Main navigation');
+  const menuButton=document.getElementById('menuToggle');if(menuButton)menuButton.setAttribute('aria-label',lang==='ar'?'فتح القائمة':'Open menu');
+  const mainBrand=document.querySelector('.brand');if(mainBrand)mainBrand.setAttribute('aria-label',lang==='ar'?'PROGRAMMER SAMMER - الرئيسية':'PROGRAMMER SAMMER - Home');
+  const floating=document.querySelector('.floating-contact');if(floating)floating.setAttribute('aria-label',lang==='ar'?'تواصل عبر واتساب':'Contact via WhatsApp');
+  const previewLabels=lang==='ar'?['مشاهدة نموذج المقهى','مشاهدة نموذج المخبز','مشاهدة نموذج المطعم']:['View café concept','View bakery concept','View restaurant concept'];
+  document.querySelectorAll('.work-preview').forEach((el,i)=>{if(previewLabels[i])el.setAttribute('aria-label',previewLabels[i]);});
+  const title=lang==='ar'?'PROGRAMMER SAMMER | نحوّل المشكلات إلى حلول رقمية':'PROGRAMMER SAMMER | Digital products & software solutions';
+  document.title=title;
+  const desc=lang==='ar'?'منتجات تقنية وأنظمة مخصصة ومواقع إلكترونية تساعد الأعمال على تحويل المشكلات إلى حلول عملية.':'Digital products, custom software systems and clear websites for businesses and teams.';
+  const meta=document.querySelector('meta[name="description"]');if(meta)meta.content=desc;
+  try{localStorage.setItem('ps-language',lang);}catch(e){}
+}
+
+document.addEventListener('DOMContentLoaded',()=>{
+  let initial='ar';try{initial=localStorage.getItem('ps-language')||'ar';}catch(e){}
+  setLanguage(initial);
+  const languageToggle=document.getElementById('languageToggle');
+  if(languageToggle)languageToggle.addEventListener('click',()=>setLanguage(document.documentElement.lang==='ar'?'en':'ar'));
+  const menuButton=document.getElementById('menuToggle');
+  const nav=document.getElementById('mainNav');
+  if(menuButton&&nav){
+    menuButton.addEventListener('click',()=>{const isOpen=nav.classList.toggle('open');menuButton.setAttribute('aria-expanded',String(isOpen));menuButton.setAttribute('aria-label',isOpen?'Close menu':'Open menu');});
+    nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');menuButton.setAttribute('aria-expanded','false');}));
+    document.addEventListener('click',e=>{if(!nav.contains(e.target)&&!menuButton.contains(e.target)&&nav.classList.contains('open')){nav.classList.remove('open');menuButton.setAttribute('aria-expanded','false');}});
+  }
+  if('IntersectionObserver'in window){const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('is-visible');observer.unobserve(entry.target);}}),{threshold:.1});document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));}
+  const form=document.getElementById('contactForm');
+  if(form){form.addEventListener('submit',e=>{
+    e.preventDefault();
+    const data=new FormData(form);const lang=document.documentElement.lang;
+    const name=String(data.get('name')||'').trim();const contact=String(data.get('phone')||'').trim();const needValue=String(data.get('need')||'');const message=String(data.get('message')||'').trim();
+    if(!name||!contact||!needValue){alert(lang==='ar'?'يرجى تعبئة الاسم ووسيلة التواصل ونوع الاحتياج.':'Please enter your name, contact details and project type.');return;}
+    const selected=form.querySelector('select[name="need"] option:checked');const need=selected?selected.textContent.trim():needValue;
+    const text=lang==='ar'?
+      ['السلام عليكم، أرغب في التواصل مع PROGRAMMER SAMMER.','الاسم / المنشأة: '+name,'وسيلة التواصل: '+contact,'نوع الاحتياج: '+need,message?'التفاصيل: '+message:''].filter(Boolean).join('\n'):
+      ['Hello, I would like to contact PROGRAMMER SAMMER.','Name / organization: '+name,'Contact: '+contact,'Project type: '+need,message?'Details: '+message:''].filter(Boolean).join('\n');
+    window.open('https://wa.me/966576124840?text='+encodeURIComponent(text),'_blank','noopener,noreferrer');
+  });}
+  const year=document.getElementById('year');if(year)year.textContent=new Date().getFullYear();
 });
